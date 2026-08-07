@@ -23,7 +23,7 @@ export type Testimonial = {
   quote: string;
   clientName: string;
   clientPhoto?: string;
-  /** e.g. "Ridgeline House, Baner" — the linked project. */
+  /** e.g. "Ridgeline House, Arera Colony" — the linked project. */
   projectLabel?: string;
   projectHref?: string;
   date: string;
@@ -105,7 +105,7 @@ export function TestimonialCard({
                   size={16}
                   className={cn(
                     index < rating
-                      ? "fill-brass-500 text-brass-500"
+                      ? "fill-brass-500 text-brass-700"
                       : "text-basalt-300",
                   )}
                 />
@@ -118,7 +118,7 @@ export function TestimonialCard({
                 href={sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 font-sans text-caption text-brass-600 underline-wipe focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-brass-300"
+                className="inline-flex items-center gap-1 font-sans text-caption text-brass-700 underline-wipe focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-brass-300"
               >
                 Verified Google review
                 <Icon icon={ExternalLink} size={16} />

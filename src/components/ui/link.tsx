@@ -35,7 +35,7 @@ export function Link({
         "underline-wipe",
         // §2.1.4 hard rule: brass-500 is a graphic colour only. Text on light
         // is always brass-600 or darker; on dark it is brass-300.
-        inverse ? "text-brass-300" : "text-brass-600",
+        inverse ? "text-brass-300" : "text-brass-700",
         visited && "visited:text-brass-700",
         className,
       )}

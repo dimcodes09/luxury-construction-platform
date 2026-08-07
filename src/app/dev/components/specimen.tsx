@@ -316,7 +316,7 @@ export function DisclosureSpecimen() {
           </Body>
         </TabsContent>
         <TabsContent value="assumptions">
-          <Body size="md">Rate card v4, Baner multiplier 1.08, Signature tier.</Body>
+          <Body size="md">Rate card v4, Arera Colony multiplier 1.08, Signature tier.</Body>
         </TabsContent>
       </TabsRoot>
     </div>

@@ -13,7 +13,7 @@ import { extendTailwindMerge } from "tailwind-merge";
  *
  *   twMerge("text-basalt-000 text-body-md")  →  "text-body-md"     colour lost
  *   twMerge("text-fg text-heading-md")       →  "text-heading-md"  colour lost
- *   twMerge("text-brass-600 text-datum")     →  "text-datum"       colour lost
+ *   twMerge("text-brass-700 text-datum")     →  "text-datum"       colour lost
  *
  * Every text colour that shared a cn() call with a size class was being
  * stripped site-wide, which is why the palette did not render as specified.

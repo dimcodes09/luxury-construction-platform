@@ -50,7 +50,7 @@ export function Stepper({
                 />
                 <div className="flex items-center gap-1.5">
                   {isComplete ? (
-                    <Icon icon={Check} size={16} className="text-brass-600" />
+                    <Icon icon={Check} size={16} className="text-brass-700" />
                   ) : null}
                   <Datum
                     aria-current={isCurrent ? "step" : undefined}

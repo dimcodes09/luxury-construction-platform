@@ -48,7 +48,7 @@ export function ProcessStep({
       {/* The persistent brass rule running the length of the timeline. */}
       <div className="relative flex flex-col items-center">
         <span className="grid size-10 shrink-0 place-items-center rounded-full border border-accent bg-canvas">
-          <Datum className="text-brass-600 dark:text-brass-300">
+          <Datum className="text-brass-700 dark:text-brass-300">
             {step.number}
           </Datum>
         </span>

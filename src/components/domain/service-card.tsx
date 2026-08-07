@@ -50,7 +50,7 @@ export function ServiceCardOverview({
       )}
     >
       {/* §2.8 — brass icons are accent moments only; a service card is one. */}
-      <Icon icon={icon} size={32} className="text-brass-500" />
+      <Icon icon={icon} size={32} className="text-brass-700" />
 
       <Heading as="h3" size="md" className="mt-6">
         <NextLink
@@ -75,7 +75,7 @@ export function ServiceCardOverview({
         </Numeral>
       </p>
 
-      <span className="mt-4 inline-flex items-center gap-2 font-sans text-body-md text-brass-600 dark:text-brass-300">
+      <span className="mt-4 inline-flex items-center gap-2 font-sans text-body-md text-brass-700 dark:text-brass-300">
         {ctaLabel}
         <Icon
           icon={ArrowRight}
@@ -151,7 +151,7 @@ export function ServiceCardDeep({
 
         <NextLink
           href={href}
-          className="mt-6 inline-flex items-center gap-2 font-sans text-body-md text-brass-600 underline-wipe focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-brass-300"
+          className="mt-6 inline-flex items-center gap-2 font-sans text-body-md text-brass-700 underline-wipe focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-brass-300"
         >
           {ctaLabel}
           <Icon icon={ArrowRight} size={16} />

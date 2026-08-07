@@ -199,7 +199,7 @@ export function MobileDrawer({
         </div>
 
         <address className="mt-6 not-italic font-sans text-caption text-basalt-400">
-          Placeholder address, Pune 411045
+          Placeholder address, Bhopal 462039
           <br />
           Mon–Sat, 10:00–19:00
         </address>

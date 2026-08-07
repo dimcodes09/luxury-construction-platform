@@ -14,7 +14,7 @@ import { Datum } from "@/components/foundation/typography";
 
 /* design.md §4.3 — the /work filter row.
  *
- * "Filters are URL STATE (/work?type=renovation&locality=baner) so results are
+ * "Filters are URL STATE (/work?type=renovation&locality=arera-colony) so results are
  * shareable, back-button-safe, and INDEXABLE." FR-PORT-02 requires the page to
  * be fully server-rendered for any combination — so this component only ever
  * navigates; it never holds the result set.
@@ -169,7 +169,7 @@ export function FilterBar({
             <NextLink
               href={pathname}
               scroll={false}
-              className="font-sans text-body-sm text-brass-600 underline-wipe focus-visible:outline-2 dark:text-brass-300"
+              className="font-sans text-body-sm text-brass-700 underline-wipe focus-visible:outline-2 dark:text-brass-300"
             >
               Clear filters
             </NextLink>

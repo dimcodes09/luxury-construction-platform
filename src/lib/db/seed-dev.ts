@@ -12,11 +12,11 @@
  * below are deliberately uneven:
  *
  *   1 ridgeline-house      COMPLETE — all 13 sections present
- *   2 kothrud-terrace-flat NO before/after         (§4.4 section 5 omitted)
- *   3 aundh-row-house      NO drawings             (§4.4 section 4 omitted)
- *   4 pashan-duplex        NO testimonial          (§4.4 section 10 omitted)
- *   5 bavdhan-kitchen      NO behind-the-wall, NO materials, NO timeline
- *   6 wakad-flat-refresh   SPARSE — hero + facts + gallery only. Eight of the
+ *   2 shahpura-terrace-flat NO before/after         (§4.4 section 5 omitted)
+ *   3 kolar-row-house      NO drawings             (§4.4 section 4 omitted)
+ *   4 trilanga-duplex        NO testimonial          (§4.4 section 10 omitted)
+ *   5 bawadiya-kitchen      NO behind-the-wall, NO materials, NO timeline
+ *   6 ayodhya-flat-refresh   SPARSE — hero + facts + gallery only. Eight of the
  *                          thirteen sections must vanish. If this page renders
  *                          an empty heading, the logic is wrong.
  *
@@ -82,7 +82,7 @@ const FIXTURES: FixtureSpec[] = [
     title: "Ridgeline House",
     subtitle: "A four-bedroom home on a sloping plot, built around one long wall.",
     type: "new-construction",
-    locality: "Baner",
+    locality: "Arera Colony",
     builtUpArea: 3850,
     plotArea: 4200,
     floors: 2,
@@ -101,7 +101,7 @@ const FIXTURES: FixtureSpec[] = [
       ourApproach:
         "We stepped the house down the slope instead of flattening it. The retaining wall became the spine of the plan, and the level change became the living room.",
     },
-    heroImage: "/dev/project-1.png",
+    heroImage: "/photos/project-1.jpg",
     galleryCount: 6,
     drawings: true,
     beforeAfterCount: 2,
@@ -112,11 +112,11 @@ const FIXTURES: FixtureSpec[] = [
   },
   {
     // MISSING: before/after. §4.4 section 5 must not render.
-    slug: "kothrud-terrace-flat",
-    title: "Kothrud Terrace Flat",
+    slug: "shahpura-terrace-flat",
+    title: "Shahpura Terrace Flat",
     subtitle: "A 1,240 sq ft flat opened up around a single kitchen island.",
     type: "interiors",
-    locality: "Kothrud",
+    locality: "Shahpura",
     builtUpArea: 1240,
     floors: 1,
     budgetBand: "25-50L",
@@ -134,7 +134,7 @@ const FIXTURES: FixtureSpec[] = [
       ourApproach:
         "We removed the passage, moved the kitchen to the light, and put the storage the family actually needed along the wall it replaced.",
     },
-    heroImage: "/dev/project-2.png",
+    heroImage: "/photos/project-2.jpg",
     galleryCount: 5,
     drawings: true,
     beforeAfterCount: 0,
@@ -145,11 +145,11 @@ const FIXTURES: FixtureSpec[] = [
   },
   {
     // MISSING: drawings. §4.4 section 4 must not render.
-    slug: "aundh-row-house",
-    title: "Aundh Row House",
+    slug: "kolar-row-house",
+    title: "Kolar Row House",
     subtitle: "A 1990s row house taken back to structure and rebuilt inside.",
     type: "renovation",
-    locality: "Aundh",
+    locality: "Kolar Road",
     builtUpArea: 2410,
     plotArea: 1800,
     floors: 2,
@@ -168,7 +168,7 @@ const FIXTURES: FixtureSpec[] = [
       ourApproach:
         "We opened the slab, found the failed junction, and rebuilt the waterproofing detail before anything cosmetic was touched.",
     },
-    heroImage: "/dev/project-3.png",
+    heroImage: "/photos/project-3.jpg",
     galleryCount: 6,
     drawings: false,
     beforeAfterCount: 2,
@@ -179,11 +179,11 @@ const FIXTURES: FixtureSpec[] = [
   },
   {
     // MISSING: testimonial. §4.4 section 10 must not render.
-    slug: "pashan-duplex",
-    title: "Pashan Duplex",
+    slug: "trilanga-duplex",
+    title: "Trilanga Duplex",
     subtitle: "Two floors, one staircase, and a courtyard that does the cooling.",
     type: "new-construction",
-    locality: "Pashan",
+    locality: "Trilanga",
     builtUpArea: 3120,
     plotArea: 3600,
     floors: 2,
@@ -202,7 +202,7 @@ const FIXTURES: FixtureSpec[] = [
       ourApproach:
         "We put a courtyard in the middle. Every habitable room now opens onto either the street face or the court.",
     },
-    heroImage: "/dev/gallery-1.png",
+    heroImage: "/photos/project-4.jpg",
     galleryCount: 4,
     drawings: true,
     beforeAfterCount: 1,
@@ -213,11 +213,11 @@ const FIXTURES: FixtureSpec[] = [
   },
   {
     // MISSING: behind-the-wall, materials, timeline. Three sections omitted.
-    slug: "bavdhan-kitchen",
-    title: "Bavdhan Kitchen",
+    slug: "bawadiya-kitchen",
+    title: "Bawadiya Kitchen",
     subtitle: "A 128 sq ft kitchen re-planned in five weeks.",
     type: "interiors",
-    locality: "Bavdhan",
+    locality: "Bawadiya Kalan",
     builtUpArea: 128,
     floors: 1,
     budgetBand: "under-25L",
@@ -234,7 +234,7 @@ const FIXTURES: FixtureSpec[] = [
       ourApproach:
         "We moved the hob to the window wall and put the tall units where the door swing already stole the floor.",
     },
-    heroImage: "/dev/gallery-3.png",
+    heroImage: "/photos/project-5.jpg",
     galleryCount: 4,
     drawings: true,
     beforeAfterCount: 1,
@@ -247,10 +247,10 @@ const FIXTURES: FixtureSpec[] = [
     /* SPARSE — the important one. Hero, facts and gallery only.
      * Eight of the thirteen sections must vanish. If this page renders a
      * heading with nothing under it, the conditional logic is broken. */
-    slug: "wakad-flat-refresh",
-    title: "Wakad Flat Refresh",
+    slug: "ayodhya-flat-refresh",
+    title: "Ayodhya Flat Refresh",
     type: "renovation",
-    locality: "Wakad",
+    locality: "Ayodhya Bypass",
     builtUpArea: 980,
     floors: 1,
     budgetBand: "under-25L",
@@ -259,7 +259,7 @@ const FIXTURES: FixtureSpec[] = [
     featured: false,
     featureOrder: 6,
     styles: [],
-    heroImage: "/dev/gallery-5.png",
+    heroImage: "/photos/project-6.jpg",
     galleryCount: 3,
     drawings: false,
     beforeAfterCount: 0,
@@ -279,10 +279,10 @@ const BEHIND_THE_WALL_LIBRARY = [
 ];
 
 const MATERIAL_LIBRARY = [
-  { slug: "burma-teak", name: "Burma teak", category: "Timber", tier: "Bespoke", brand: "Burma", grade: "First quality", unitCost: 4800, unit: "sq ft", rationale: "Moves least with Pune's humidity swing, which is what keeps a door shutting in year five.", image: "/dev/material-1.png" },
-  { slug: "terrazzo-16mm", name: "Terrazzo", category: "Flooring", tier: "Signature", brand: "Bharat", grade: "16mm", unitCost: 190, unit: "sq ft", rationale: "Takes a scratch better than vitrified and can be re-polished in place.", image: "/dev/material-2.png" },
-  { slug: "brushed-brass-pvd", name: "Brushed brass", category: "Hardware", tier: "Bespoke", brand: "Jaquar", grade: "PVD", unitCost: 2400, unit: "set", rationale: "PVD does not pit in a bathroom the way lacquered brass does.", image: "/dev/material-3.png" },
-  { slug: "lime-plaster", name: "Lime plaster", category: "Finishes", tier: "Signature", brand: "Local", grade: "3-coat", unitCost: 85, unit: "sq ft", rationale: "Breathes, so it does not trap the damp that blisters emulsion.", image: "/dev/material-4.png" },
+  { slug: "burma-teak", name: "Burma teak", category: "Timber", tier: "Bespoke", brand: "Burma", grade: "First quality", unitCost: 4800, unit: "sq ft", rationale: "Moves least with Bhopal's humidity swing, which is what keeps a door shutting in year five.", image: "/photos/material-1.jpg" },
+  { slug: "terrazzo-16mm", name: "Terrazzo", category: "Flooring", tier: "Signature", brand: "Bharat", grade: "16mm", unitCost: 190, unit: "sq ft", rationale: "Takes a scratch better than vitrified and can be re-polished in place.", image: "/photos/material-2.jpg" },
+  { slug: "brushed-brass-pvd", name: "Brushed brass", category: "Hardware", tier: "Bespoke", brand: "Jaquar", grade: "PVD", unitCost: 2400, unit: "set", rationale: "PVD does not pit in a bathroom the way lacquered brass does.", image: "/photos/material-3.jpg" },
+  { slug: "lime-plaster", name: "Lime plaster", category: "Finishes", tier: "Signature", brand: "Local", grade: "3-coat", unitCost: 85, unit: "sq ft", rationale: "Breathes, so it does not trap the damp that blisters emulsion.", image: "/photos/material-4.jpg" },
 ];
 
 export async function seedDev(): Promise<void> {
@@ -388,8 +388,8 @@ export async function seedDev(): Promise<void> {
         featureOrder: fixture.featureOrder,
 
         locality: fixture.locality,
-        city: "Pune",
-        state: "Maharashtra",
+        city: "Bhopal",
+        state: "Madhya Pradesh",
 
         builtUpArea: fixture.builtUpArea,
         plotArea: fixture.plotArea,
@@ -411,7 +411,7 @@ export async function seedDev(): Promise<void> {
 
         gallery: Array.from({ length: fixture.galleryCount }, (_, index) => ({
           asset: asset(
-            `/dev/gallery-${(index % 6) + 1}.png`,
+            `/photos/gallery-${(index % 6) + 1}.jpg`,
             `${fixture.title} interior ${index + 1}`,
             420,
             440,
@@ -424,20 +424,20 @@ export async function seedDev(): Promise<void> {
         drawings: fixture.drawings
           ? [
               {
-                asset: asset(`/dev/service-1.png`, `${fixture.title} floor plan`, 520, 390),
+                asset: asset(`/photos/drawing-1.jpg`, `${fixture.title} floor plan`, 520, 390),
                 type: "plan",
                 floor: 0,
               },
               {
-                asset: asset(`/dev/service-1.png`, `${fixture.title} section`, 520, 390),
+                asset: asset(`/photos/drawing-1.jpg`, `${fixture.title} section`, 520, 390),
                 type: "section",
               },
             ]
           : [],
 
         beforeAfter: Array.from({ length: fixture.beforeAfterCount }, (_, index) => ({
-          before: asset("/dev/before.png", `${fixture.title} before`, 520, 293),
-          after: asset("/dev/after.png", `${fixture.title} after`, 520, 293),
+          before: asset("/photos/before.jpg", `${fixture.title} before`, 520, 293),
+          after: asset("/photos/after.jpg", `${fixture.title} after`, 520, 293),
           caption: `Kitchen re-planned, 128 sq ft · ₹4.6 L · 5 weeks`,
           scope: "Kitchen re-planned",
           cost: 460000,
@@ -449,7 +449,7 @@ export async function seedDev(): Promise<void> {
           0,
           fixture.behindTheWallCount,
         ).map((item, index) => ({
-          asset: asset(`/dev/btw-${index + 1}.png`, item.title, 360, 270),
+          asset: asset(`/photos/btw-${index + 1}.jpg`, item.title, 360, 270),
           caption: item.title,
           specification: item.specification,
           capturedAt: new Date(
@@ -473,7 +473,7 @@ export async function seedDev(): Promise<void> {
         testimonial: testimonialId,
 
         seo: {
-          title: `${fixture.title} — ${fixture.locality}, Pune`,
+          title: `${fixture.title} — ${fixture.locality}, Bhopal`,
           description: `${fixture.builtUpArea.toLocaleString("en-IN")} sq ft ${fixture.type.replace("-", " ")} in ${fixture.locality}, completed ${fixture.completionYear}. Planned and actual duration published.`,
           // Doubles as the fixture marker so --clean can find them.
           canonical: DEV_FIXTURE_MARKER,
@@ -501,7 +501,7 @@ export async function seedDev(): Promise<void> {
   }
 
   console.log(
-    `\n${created} fixture projects seeded. Check /work/wakad-flat-refresh —\n` +
+    `\n${created} fixture projects seeded. Check /work/ayodhya-flat-refresh —\n` +
       `it is the sparse one, and must render NO empty sections.\n`,
   );
 }

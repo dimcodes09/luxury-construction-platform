@@ -62,7 +62,7 @@ export function SiteShell({
       <FooterMega
         brandName="ZYVORA"
         foundedYear={2018}
-        conversionHeadline="Building in Pune? Let's talk about your site."
+        conversionHeadline="Building in Bhopal? Let's talk about your site."
         conversionActions={
           <>
             {/* §0.5 — a rung-5 ask is correct here: the footer sits at the end
@@ -87,7 +87,7 @@ export function SiteShell({
         contactSlot={
           <div>
             <p className="font-sans text-caption text-basalt-400">
-              Placeholder address, Pune 411045
+              Placeholder address, Bhopal 462039
             </p>
             <a
               href={`tel:${phoneE164}`}
@@ -104,11 +104,11 @@ export function SiteShell({
         credentials={[
           // §3.8 zone 3 — GSTIN and registration numbers are "the cheapest,
           // highest-impact legitimacy signals available" (R-01).
-          { label: "GSTIN", value: "27AABCZ1234M1Z5" },
-          { label: "Registration", value: "U45200PN2018PTC" },
+          { label: "GSTIN", value: "23AABCZ1234M1Z5" },
+          { label: "Registration", value: "U45200MP2018PTC" },
           { label: "Insurance", value: "CAR policy, active" },
         ]}
-        localities={["Baner", "Aundh", "Kothrud", "Pashan", "Bavdhan", "Wakad"]}
+        localities={["Arera Colony", "Kolar Road", "Shahpura", "Trilanga", "Bawadiya Kalan", "Ayodhya Bypass"]}
         localityHref={(locality) => `/areas/${locality.toLowerCase()}`}
         legalLinks={[
           { label: "Privacy", href: "/privacy" },

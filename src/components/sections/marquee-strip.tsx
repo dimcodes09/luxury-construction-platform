@@ -19,7 +19,7 @@ import { Datum } from "@/components/foundation/typography";
 export type MarqueeItem = {
   /** e.g. "Ridgeline House" */
   primary: string;
-  /** e.g. "Baner · 2025" */
+  /** e.g. "Arera Colony · 2025" */
   secondary: string;
 };
 

@@ -36,7 +36,7 @@ type FormData = Step1Data & Step2Data & Step3Data & Step4Data;
 
 const INITIAL_FORM: FormData = {
   projectType: "new-construction",
-  locality: "Baner",
+  locality: "Arera Colony",
   area: "2400",
   timeline: "1-3-months",
   budgetBand: "50L-1Cr",
@@ -173,8 +173,8 @@ export default function ContactPage() {
             <strong>{formData.locality}</strong>. Rahul, our Lead Site Engineer, will call you within one working day.
           </Body>
 
-          <div className="mt-8 rounded-md bg-basalt-100/50 dark:bg-basalt-850 p-6 text-left w-full max-w-md hairline">
-            <Label className="text-brass-500">WHAT WE RECEIVED</Label>
+          <div className="mt-8 rounded-md bg-basalt-100/50 dark:bg-basalt-800 p-6 text-left w-full max-w-md hairline">
+            <Label className="text-brass-700">WHAT WE RECEIVED</Label>
             <ul className="mt-3 flex flex-col gap-2 font-mono text-body-sm text-fg">
               <li>• Location: {formData.locality}</li>
               <li>• Estimated Area: {formData.area || "Not specified"} sq ft</li>
@@ -191,7 +191,7 @@ export default function ContactPage() {
               </NextLink>
             </Button>
             <a
-              href={`https://wa.me/919876543210?text=Hi%20Rahul,%20I%20just%20submitted%20an%20enquiry%20for%20${encodeURIComponent(
+              href={`https://wa.me/919399817681?text=Hi%20Rahul,%20I%20just%20submitted%20an%20enquiry%20for%20${encodeURIComponent(
                 formData.locality,
               )}`}
               target="_blank"
@@ -281,7 +281,7 @@ export default function ContactPage() {
                             <Icon
                               icon={opt.icon}
                               size={24}
-                              className={active ? "text-brass-500" : "text-fg-muted"}
+                              className={active ? "text-brass-700" : "text-fg-muted"}
                             />
                             <div className="flex-1">
                               <span className="block font-sans text-body-md font-medium text-fg">
@@ -291,7 +291,7 @@ export default function ContactPage() {
                                 {opt.desc}
                               </span>
                             </div>
-                            {active && <Icon icon={Check} size={20} className="text-brass-500" />}
+                            {active && <Icon icon={Check} size={20} className="text-brass-700" />}
                           </button>
                         );
                       })}
@@ -312,7 +312,7 @@ export default function ContactPage() {
                         <Input
                           value={formData.locality}
                           onChange={(e) => updateForm({ locality: e.target.value })}
-                          placeholder="e.g. Baner, Wakad, Kothrud, Kalyani Nagar"
+                          placeholder="e.g. Arera Colony, Ayodhya Bypass, Shahpura, Kalyani Nagar"
                           className="w-full"
                         />
                       </div>
@@ -350,7 +350,7 @@ export default function ContactPage() {
                               className={`rounded-md p-3 font-sans text-body-sm transition-colors hairline ${
                                 formData.timeline === chip.id
                                   ? "bg-brass-500 text-basalt-950 font-medium"
-                                  : "bg-basalt-100 hover:bg-basalt-200 dark:bg-basalt-800 dark:hover:bg-basalt-750 text-fg"
+                                  : "bg-basalt-100 hover:bg-basalt-200 dark:bg-basalt-800 dark:hover:bg-basalt-700 text-fg"
                               }`}
                             >
                               {chip.label}
@@ -370,7 +370,7 @@ export default function ContactPage() {
                               className={`rounded-md px-4 py-2.5 font-sans text-body-sm transition-colors hairline ${
                                 formData.budgetBand === chip.id
                                   ? "bg-brass-500 text-basalt-950 font-medium"
-                                  : "bg-basalt-100 hover:bg-basalt-200 dark:bg-basalt-800 dark:hover:bg-basalt-750 text-fg"
+                                  : "bg-basalt-100 hover:bg-basalt-200 dark:bg-basalt-800 dark:hover:bg-basalt-700 text-fg"
                               }`}
                             >
                               {chip.label}
@@ -419,7 +419,7 @@ export default function ContactPage() {
                           id="whatsapp"
                           checked={formData.whatsappOptIn}
                           onChange={(e) => updateForm({ whatsappOptIn: e.target.checked })}
-                          className="h-4 w-4 rounded border-border text-brass-500 focus:ring-brass-500"
+                          className="h-4 w-4 rounded border-border text-brass-700 focus:ring-brass-500"
                         />
                         <label htmlFor="whatsapp" className="font-sans text-body-sm text-fg">
                           Receive updates & project specs via WhatsApp (recommended)
@@ -482,12 +482,12 @@ export default function ContactPage() {
             <div className="lg:col-span-5 flex flex-col gap-8">
               {/* Direct Phone Call */}
               <div className="rounded-md bg-bg p-6 hairline flex flex-col gap-4">
-                <Label className="text-brass-500">DIRECT PHONE LINE</Label>
+                <Label className="text-brass-700">DIRECT PHONE LINE</Label>
                 <a
-                  href="tel:+919876543210"
-                  className="font-serif text-heading-lg text-fg hover:text-brass-600 transition-colors"
+                  href="tel:+919399817681"
+                  className="font-serif text-heading-lg text-fg hover:text-brass-700 transition-colors"
                 >
-                  +91 98765 43210
+                  +91 93998 17681
                 </a>
                 <Body size="sm" className="text-fg-secondary">
                   Mon – Sat, 9:00 AM – 7:00 PM IST. Direct to site engineering desk.
@@ -497,7 +497,7 @@ export default function ContactPage() {
               {/* Direct WhatsApp with Team Member */}
               <div className="rounded-md bg-emerald-500/5 border border-emerald-500/20 p-6 flex items-center gap-4">
                 <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-emerald-500">
-                  <Image src="/dev/team-1.png" alt="Rahul, Site Engineer" fill className="object-cover" />
+                  <Image src="/photos/team-1.jpg" alt="Rahul, Site Engineer" fill className="object-cover" />
                 </div>
                 <div className="flex-1">
                   <span className="block font-mono text-caption text-emerald-600 dark:text-emerald-400">
@@ -507,7 +507,7 @@ export default function ContactPage() {
                     Senior Project Engineer
                   </span>
                   <a
-                    href="https://wa.me/919876543210"
+                    href="https://wa.me/919399817681"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-1 inline-flex items-center gap-1 font-sans text-body-sm text-emerald-600 dark:text-emerald-400 underline-wipe"
@@ -520,11 +520,11 @@ export default function ContactPage() {
 
               {/* Office Address & Embedded Map Placeholder */}
               <div className="rounded-md bg-bg p-6 hairline flex flex-col gap-4">
-                <Label className="text-brass-500">PUNE OFFICE & EXPERIENCE CENTRE</Label>
+                <Label className="text-brass-700">PUNE OFFICE & EXPERIENCE CENTRE</Label>
                 <div className="flex items-start gap-3">
                   <Icon icon={MapPin} size={20} className="mt-1 text-fg-muted shrink-0" />
                   <Body size="sm" className="text-fg">
-                    ZYVORA Studio, 4th Floor, Apex Towers, Baner Road, Baner, Pune, Maharashtra 411045
+                    ZYVORA Studio, 4th Floor, Apex Towers, Arera Colony Road, Arera Colony, Bhopal, Madhya Pradesh 462039
                   </Body>
                 </div>
                 <div className="flex items-start gap-3">
@@ -540,7 +540,7 @@ export default function ContactPage() {
                     <button
                       type="button"
                       onClick={() => setMapLoaded(true)}
-                      className="flex flex-col items-center gap-2 text-fg hover:text-brass-500 transition-colors p-4 text-center"
+                      className="flex flex-col items-center gap-2 text-fg hover:text-brass-700 transition-colors p-4 text-center"
                     >
                       <Icon icon={Map} size={32} />
                       <span className="font-sans text-body-sm font-medium">Click to load interactive map</span>
@@ -549,7 +549,7 @@ export default function ContactPage() {
                   ) : (
                     <iframe
                       title="Office Location Map"
-                      src="https://maps.google.com/maps?q=Baner%20Road,%20Pune&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                      src="https://maps.google.com/maps?q=Arera%20Colony,%20Bhopal&t=&z=14&ie=UTF8&iwloc=&output=embed"
                       className="h-full w-full border-0"
                       loading="lazy"
                     />

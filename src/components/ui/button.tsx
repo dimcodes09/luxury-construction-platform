@@ -72,7 +72,7 @@ const buttonVariants = cva(
         ghost:
           "border-transparent bg-transparent text-ink-700 hover:bg-basalt-100 dark:text-basalt-300 dark:hover:bg-basalt-800",
         // §3.2 link styling; the underline wipe lives on the Link primitive.
-        link: "border-transparent bg-transparent text-brass-600 underline-offset-4 hover:underline dark:text-brass-300 after:hidden",
+        link: "border-transparent bg-transparent text-brass-700 underline-offset-4 hover:underline dark:text-brass-300 after:hidden",
         // §3.1: the WhatsApp channel only. Colour is locked by the third party.
         whatsapp:
           "border-transparent bg-whatsapp text-basalt-000 hover:brightness-110",

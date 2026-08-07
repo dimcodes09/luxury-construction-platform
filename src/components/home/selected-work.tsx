@@ -41,7 +41,7 @@ export function SelectedWork({
         action={
           <NextLink
             href="/work"
-            className="inline-flex items-center gap-2 font-sans text-body-md text-brass-600 underline-wipe focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-brass-300"
+            className="inline-flex items-center gap-2 font-sans text-body-md text-brass-700 underline-wipe focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-brass-300"
           >
             All {totalCount} projects
             <Icon icon={ArrowRight} size={20} />

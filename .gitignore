@@ -42,6 +42,12 @@
 # that Phase 2 replaces with real project photography anyway.
 /public/dev/
 
+# Development photography downloaded from Unsplash by `npm run photos`.
+# Stock, and a documented deviation from design.md §0.2 — replaced with the
+# business own project photography at Phase 2. Not committed: 3.9MB of
+# third-party images do not belong in this history.
+/public/photos/
+
 # ── editor & tooling ────────────────────────────────────────────────────────
 .vscode/*
 !.vscode/extensions.json

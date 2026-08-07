@@ -35,7 +35,7 @@ const PAGE_SIZE = 12;
 export const metadata: Metadata = {
   title: "Work — ZYVORA",
   description:
-    "Every home, office and renovation we have completed in Pune, with built-up area, budget band, and planned against actual duration published on each one.",
+    "Every home, office and renovation we have completed in Bhopal, with built-up area, budget band, and planned against actual duration published on each one.",
 };
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
@@ -85,7 +85,7 @@ export default async function WorkPage({
 
   return (
     <SiteShell
-      phoneE164={settings?.phoneE164 ?? "+919876543210"}
+      phoneE164={settings?.phoneE164 ?? "+919399817681"}
       rating={{ value: 4.9, count: 61 }}
       dockPerson={{
         firstName: "Priya",
@@ -97,7 +97,7 @@ export default async function WorkPage({
         <SectionHeader
           index="02"
           label="Work"
-          title={`${totalPublished} homes, offices and renovations across ${settings?.city ?? "Pune"}.`}
+          title={`${totalPublished} homes, offices and renovations across ${settings?.city ?? "Bhopal"}.`}
         />
 
         <div className="mt-10">

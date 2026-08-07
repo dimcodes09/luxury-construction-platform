@@ -51,7 +51,7 @@ export function Breadcrumb({
                 )}
               </li>
               {!isLast ? (
-                <li aria-hidden="true" className="text-brass-500">
+                <li aria-hidden="true" className="text-brass-700">
                   /
                 </li>
               ) : null}

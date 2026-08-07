@@ -52,6 +52,8 @@ Accepted, deliberate, and listed here so they are not silently rediscovered as b
 |---|---|---|---|
 | ~~Fonts load via `next/font/google`~~ — **RESOLVED**, now `next/font/local` per spec | design.md §2.2.1 | `next/font/google` fetches woff2 at compile time via Turbopack's native HTTP stack, which ignores Node's DNS resolver. On any network with a restricted resolver the font module fails to build (`Module not found: @vercel/turbopack-next/internal/font/google/font`) and **every page 500s** — a failure that reads nothing like DNS. Self-hosting removes the build-time network dependency entirely and is what §2.2.1 asked for anyway. | Done. Latin-subset variable cuts live in `src/styles/fonts/`: Fraunces 67.3KB + Inter 48.3KB + JetBrains Mono 40.4KB = **152.3KB / 190KB budget**. Fraunces and Inter are preloaded; mono is not (it carries no above-the-fold text). |
 | `/dev/*` routes are excluded from production | — | The component gallery imports every Radix primitive at once; leaving it in would measure the shared-JS budget against code that never ships. `page.dev.tsx` is only a page extension in development (see [next.config.ts](next.config.ts)). | None needed. Add new dev-only routes as `page.dev.tsx`. |
+| **Development imagery is stock, from Unsplash** | design.md §0.2, implementationplan.md Phase 2 | §0.2 rejects stock outright and Phase 2 makes "Zero stock photography anywhere" an acceptance criterion, because R-07 is that authenticity outperforms polish — a site whose positioning is *"we photograph the concealed work"* cannot be illustrated with someone else's photographs. This was accepted **for development only**, so the UI could be judged against real photographic weight instead of grey rectangles. | `npm run photos` downloads the set into `public/photos/` (gitignored). Replace with the business's own photography at Phase 2 (§8.2 shoots 1–7). **SRS §10 gate 4 — "zero stock photography" — is a release gate and this currently fails it.** |
+| Accent text is `brass-700`, not `brass-600` | design.md §2.1.4 | §2.1.4 labels `brass-600` "accessible accent text on light (AA)". Measured, it is **3.82:1** on `basalt-050` — AA for large text only, and every accent link on the site is body-size. `brass-700` is 5.15:1. | None needed. `brass-600` remains correct for fills and large display accents. Verify with `npm run audit:colors`. |
 
 ## Performance budgets (SRS §8.1) — CI fails the build on breach
 
@@ -83,7 +85,7 @@ npm run placeholders           # regenerates public/dev/*.png (gitignored, ~1s)
 npm run dev
 ```
 
-`seed:dev` creates six projects with deliberately uneven data so FR-PROJ-01's conditional-section logic is exercised — `/work/wakad-flat-refresh` is the sparse one and must render **no** empty sections. Remove with `npm run seed:dev -- --clean`.
+`seed:dev` creates six projects with deliberately uneven data so FR-PROJ-01's conditional-section logic is exercised — `/work/ayodhya-flat-refresh` is the sparse one and must render **no** empty sections. Remove with `npm run seed:dev -- --clean`.
 
 **If DNS is restricted** (sandboxes, some corporate networks): set `DNS_SERVERS=8.8.8.8,1.1.1.1` in `.env.local`. Applied by [scripts/dns-bootstrap.cjs](scripts/dns-bootstrap.cjs) (preloaded before Next starts) and by [connect.ts](src/lib/db/connect.ts) for Mongoose. Absent, nothing is overridden — on Vercel the platform resolver is correct.
 

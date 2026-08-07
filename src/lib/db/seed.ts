@@ -65,14 +65,14 @@ const seedRateCard = {
     },
   },
   localityMultipliers: {
-    baner: 1.08,
-    aundh: 1.06,
-    kothrud: 1.02,
-    pashan: 1.04,
-    bavdhan: 1.0,
-    wakad: 0.98,
+    "arera-colony": 1.08,
+    shahpura: 1.05,
+    "kolar-road": 1.0,
+    trilanga: 1.04,
+    "bawadiya-kalan": 0.98,
+    "ayodhya-bypass": 0.96,
   },
-  siteFactors: { normal: 1.0, sloped: 1.06, "black-cotton-soil": 1.09 },
+  siteFactors: { normal: 1.0, sloped: 1.06, "black-cotton-soil": 1.09, "rocky-strata": 1.05 },
   addons: [
     { key: "lift", label: "Passenger lift", unit: "unit", costPerUnit: 850000 },
     { key: "solar", label: "Solar water heating", unit: "unit", costPerUnit: 65000 },
@@ -240,15 +240,15 @@ export async function seed(): Promise<void> {
       business: {
         brandName: "ZYVORA",
         descriptor: "Construction • Interiors • Renovation",
-        city: "Pune",
-        state: "Maharashtra",
+        city: "Bhopal",
+        state: "Madhya Pradesh",
         foundedYear: 2018,
-        phoneE164: "+919876543210",
-        whatsappE164: "+919876543210",
-        email: "hello@example.com",
-        gstin: "27AABCZ1234M1Z5",
-        registrationNo: "U45200PN2018PTC000000",
-        officeAddress: "Placeholder address, Pune 411045",
+        phoneE164: "+919399817681",
+        whatsappE164: "+919399817681",
+        email: "dhoteghanshyam9@gmail.com",
+        gstin: "23AABCZ1234M1Z5",
+        registrationNo: "U45200MP2018PTC000000",
+        officeAddress: "Placeholder address, Bhopal 462039",
         hours: "Mon–Sat, 10:00–19:00",
       },
       stats: [
@@ -258,8 +258,8 @@ export async function seed(): Promise<void> {
         { value: 0, precision: 0, label: "disputes", sublabel: "in 8 years", verifiedAt: null },
       ],
       notifications: {
-        leadRecipients: ["owner@example.com"],
-        digestRecipients: ["owner@example.com"],
+        leadRecipients: ["dhoteghanshyam9@gmail.com"],
+        digestRecipients: ["dhoteghanshyam9@gmail.com"],
         whatsappEnabled: false,
       },
       ai: {
@@ -274,9 +274,9 @@ export async function seed(): Promise<void> {
       },
       siteVisitSlots: ["Mon 11:00", "Wed 16:00", "Sat 10:00", "Sat 15:00"],
       seoDefaults: {
-        titleTemplate: "%s · ZYVORA — Pune",
+        titleTemplate: "%s · ZYVORA — Bhopal",
         defaultDescription:
-          "Turnkey construction, interiors and renovation in Pune. Published rates, published payment milestones, and photographs of the concealed work.",
+          "Turnkey construction, interiors and renovation in Bhopal. Published rates, published payment milestones, and photographs of the concealed work.",
       },
     },
     { upsert: true, new: true, setDefaultsOnInsert: true },
@@ -291,18 +291,18 @@ export async function seed(): Promise<void> {
   // §NFR-SEO-10 / §11 risk 9 — only localities with real projects and
   // genuinely specific content ship. These carry real soil and typology notes.
   const localities = [
-    { slug: "baner", name: "Baner", soilType: "Murum over basalt", rateMultiplier: 1.08, commonTypologies: ["Row house", "Bungalow"], notes: "Steeper plots along the hill face need retaining walls; budget for them early." },
-    { slug: "aundh", name: "Aundh", soilType: "Mixed murum", rateMultiplier: 1.06, commonTypologies: ["Apartment", "Bungalow"], notes: "Older society buildings mean lift access limits on material sizes." },
-    { slug: "kothrud", name: "Kothrud", soilType: "Basalt", rateMultiplier: 1.02, commonTypologies: ["Apartment", "Row house"], notes: "Dense lanes restrict transit-mixer access; smaller pours are common." },
-    { slug: "pashan", name: "Pashan", soilType: "Murum", rateMultiplier: 1.04, commonTypologies: ["Bungalow"], notes: "Larger plots, so compound walls are a meaningful line item." },
-    { slug: "bavdhan", name: "Bavdhan", soilType: "Murum over basalt", rateMultiplier: 1.0, commonTypologies: ["Row house", "Apartment"], notes: "Newer layouts; drainage connections are usually straightforward." },
-    { slug: "wakad", name: "Wakad", soilType: "Black cotton in patches", rateMultiplier: 0.98, commonTypologies: ["Apartment"], notes: "Black cotton soil in pockets — soil testing is not optional here." },
+    { slug: "arera-colony", name: "Arera Colony", soilType: "Vindhyan sandstone over murum", rateMultiplier: 1.08, commonTypologies: ["Bungalow", "Duplex"], notes: "Rock is close to the surface on the higher E-sectors, so excavation is slower but footings are shallower and cheaper." },
+    { slug: "shahpura", name: "Shahpura", soilType: "Black cotton over weathered rock", rateMultiplier: 1.05, commonTypologies: ["Apartment", "Duplex"], notes: "Lake-facing plots need extra attention to plinth level and surface drainage during the monsoon." },
+    { slug: "kolar-road", name: "Kolar Road", soilType: "Black cotton, deep in pockets", rateMultiplier: 1.0, commonTypologies: ["Row house", "Bungalow"], notes: "Black cotton runs deep here. Soil testing is not optional, and under-reamed piles are common." },
+    { slug: "trilanga", name: "Trilanga", soilType: "Murum over rock", rateMultiplier: 1.04, commonTypologies: ["Bungalow", "Duplex"], notes: "Larger plots and good access, so compound walls and landscaping are usually a real line item." },
+    { slug: "bawadiya-kalan", name: "Bawadiya Kalan", soilType: "Black cotton", rateMultiplier: 0.98, commonTypologies: ["Row house", "Apartment"], notes: "Newer layouts with narrow internal roads — transit-mixer access decides the pour schedule." },
+    { slug: "ayodhya-bypass", name: "Ayodhya Bypass", soilType: "Mixed murum and black cotton", rateMultiplier: 0.96, commonTypologies: ["Apartment", "Row house"], notes: "Fast-developing belt. Municipal water is not everywhere yet, so borewell is usually costed in." },
   ];
 
   for (const locality of localities) {
     await Locality.findOneAndUpdate(
       { slug: locality.slug },
-      { ...locality, city: "Pune", status: "published" },
+      { ...locality, city: "Bhopal", status: "published" },
       { upsert: true, setDefaultsOnInsert: true },
     );
   }
@@ -358,7 +358,7 @@ export async function seed(): Promise<void> {
           { step: 2, title: "Drawings and BOQ", body: "Plans, elevations and a line-by-line bill of quantities.", durationDays: 21, paymentPoint: true },
         ],
         seo: {
-          title: `${service.name} in Pune — Cost, Process & Projects`,
+          title: `${service.name} in Bhopal — Cost, Process & Projects`,
           description: `${service.headline} Published per-sq-ft ranges, a full exclusions list, and photographs of the concealed work.`,
         },
       },

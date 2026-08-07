@@ -363,7 +363,7 @@ export default function ComponentGalleryPage() {
                 <CardMedia ratio="16/10">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/dev/project-1.png"
+                    src="/photos/project-1.jpg"
                     alt=""
                     className="size-full object-cover transition-transform duration-base ease-standard group-hover:scale-103"
                   />
@@ -483,7 +483,7 @@ export default function ComponentGalleryPage() {
               action={<Button variant="secondary">Clear filters</Button>}
             />
           </Card>
-          <div className="mt-8 flex items-center gap-6 text-brass-500">
+          <div className="mt-8 flex items-center gap-6 text-brass-700">
             <MonogramPlate />
             <Caption>
               §1.1.3 — the Z drawn as a braced frame: chord, brace, chord, with
@@ -504,26 +504,26 @@ export default function ComponentGalleryPage() {
               {
                 index: "04",
                 title: "Ridgeline House",
-                locality: "Baner",
+                locality: "Arera Colony",
                 areaSqft: 3850,
                 year: 2025,
-                image: "/dev/project-1.png",
+                image: "/photos/project-1.jpg",
               },
               {
                 index: "05",
-                title: "Kothrud Terrace Flat",
-                locality: "Kothrud",
+                title: "Shahpura Terrace Flat",
+                locality: "Shahpura",
                 areaSqft: 1240,
                 year: 2024,
-                image: "/dev/project-2.png",
+                image: "/photos/project-2.jpg",
               },
               {
                 index: "06",
-                title: "Aundh Row House",
-                locality: "Aundh",
+                title: "Kolar Row House",
+                locality: "Kolar Road",
                 areaSqft: 2410,
                 year: 2024,
-                image: "/dev/project-3.png",
+                image: "/photos/project-3.jpg",
               },
             ].map((project) => (
               <ProjectCard
@@ -550,8 +550,8 @@ export default function ComponentGalleryPage() {
         >
           <div className="max-w-wide">
             <BeforeAfter
-              before={{ src: "/dev/before.png", alt: "Kitchen before work" }}
-              after={{ src: "/dev/after.png", alt: "Kitchen after work" }}
+              before={{ src: "/photos/before.jpg", alt: "Kitchen before work" }}
+              after={{ src: "/photos/after.jpg", alt: "Kitchen after work" }}
               caption="Kitchen re-planned, 128 sq ft · ₹4.6 L · 5 weeks"
             />
           </div>
@@ -651,7 +651,7 @@ export default function ComponentGalleryPage() {
               "24-hour pressure test, documented and dated",
               "10-year written warranty on the membrane",
             ]}
-            media={{ src: "/dev/service-1.png", alt: "" }}
+            media={{ src: "/photos/service-1.jpg", alt: "" }}
           />
         </Bench>
 
@@ -665,33 +665,33 @@ export default function ComponentGalleryPage() {
             <BehindTheWall
               items={[
                 {
-                  image: { src: "/dev/btw-1.png", alt: "" },
+                  image: { src: "/photos/btw-1.jpg", alt: "" },
                   title: "Bathroom membrane",
                   specification: "2-coat polyurethane",
                   capturedAt: "2025-03-14",
-                  geo: "Baner",
+                  geo: "Arera Colony",
                 },
                 {
-                  image: { src: "/dev/btw-2.png", alt: "" },
+                  image: { src: "/photos/btw-2.jpg", alt: "" },
                   title: "Conduit routing",
                   specification: "25mm FR PVC concealed",
                   capturedAt: "2025-03-02",
-                  geo: "Baner",
+                  geo: "Arera Colony",
                 },
                 {
-                  image: { src: "/dev/btw-3.png", alt: "" },
+                  image: { src: "/photos/btw-3.jpg", alt: "" },
                   title: "Slab reinforcement",
                   specification: "Fe550 8mm @150 c/c",
                   capturedAt: "2025-01-28",
                 },
                 {
-                  image: { src: "/dev/btw-4.png", alt: "" },
+                  image: { src: "/photos/btw-4.jpg", alt: "" },
                   title: "Plumbing pressure test",
                   specification: "3 bar / 24 hr",
                   capturedAt: "2025-02-19",
                 },
                 {
-                  image: { src: "/dev/btw-5.png", alt: "" },
+                  image: { src: "/photos/btw-5.jpg", alt: "" },
                   title: "Chajja waterproofing",
                   specification: "APP membrane 4mm",
                   capturedAt: "2025-04-08",
@@ -713,7 +713,7 @@ export default function ComponentGalleryPage() {
                 quote:
                   "They sent photos of the waterproofing before they tiled over it. Nobody does that.",
                 clientName: "Anjali & Rohit Deshpande",
-                projectLabel: "Ridgeline House, Baner",
+                projectLabel: "Ridgeline House, Arera Colony",
                 projectHref: "/dev/components",
                 date: "Mar 2025",
                 rating: 5,
@@ -794,7 +794,7 @@ export default function ComponentGalleryPage() {
               member={{
                 name: "Priya Kulkarni",
                 role: "Client Relations",
-                photo: { src: "/dev/team-1.png", alt: "" },
+                photo: { src: "/photos/team-1.jpg", alt: "" },
                 tenureFrom: 2019,
                 bio: "Answers the WhatsApp dock, usually within 20 minutes.",
               }}
@@ -803,13 +803,13 @@ export default function ComponentGalleryPage() {
               <ArticleCard
                 article={{
                   href: "/dev/components",
-                  title: "House construction cost per sq ft in Pune, 2026",
+                  title: "House construction cost per sq ft in Bhopal, 2026",
                   excerpt:
                     "What the per-sq-ft number covers, what it never covers, and the four things that move it most.",
                   category: "Cost guide",
                   publishedAt: "2026-02-11",
                   readTimeMinutes: 9,
-                  image: { src: "/dev/article-1.png", alt: "" },
+                  image: { src: "/photos/article-1.jpg", alt: "" },
                 }}
               />
             </div>
@@ -871,7 +871,7 @@ export default function ComponentGalleryPage() {
         >
           <SplitFeature
             eyebrow={<DatumLine index="03" label="Materials" />}
-            media={{ src: "/dev/service-1.png", alt: "" }}
+            media={{ src: "/photos/service-1.jpg", alt: "" }}
           >
             <Heading size="lg">Every material, with its grade and its brand.</Heading>
             <Body size="md" className="mt-4">
@@ -885,10 +885,10 @@ export default function ComponentGalleryPage() {
           <div className="-mx-gutter">
             <MarqueeStrip
               items={[
-                { primary: "Ridgeline House", secondary: "Baner · 2025" },
-                { primary: "Kothrud Terrace Flat", secondary: "Kothrud · 2024" },
-                { primary: "Aundh Row House", secondary: "Aundh · 2024" },
-                { primary: "Pashan Duplex", secondary: "Pashan · 2023" },
+                { primary: "Ridgeline House", secondary: "Arera Colony · 2025" },
+                { primary: "Shahpura Terrace Flat", secondary: "Shahpura · 2024" },
+                { primary: "Kolar Row House", secondary: "Kolar Road · 2024" },
+                { primary: "Trilanga Duplex", secondary: "Trilanga · 2023" },
               ]}
             />
           </div>
@@ -898,18 +898,18 @@ export default function ComponentGalleryPage() {
           <div className="rounded-md bg-basalt-950 px-6">
             <TrustBar
               credentials={[
-                { label: "GSTIN", value: "27AABCZ1234M1Z5" },
-                { label: "Registration", value: "U45200PN2018PTC" },
+                { label: "GSTIN", value: "23AABCZ1234M1Z5" },
+                { label: "Registration", value: "U45200MP2018PTC" },
                 { label: "Insurance", value: "CAR policy, active" },
                 { label: "Google", value: "4.9 / 5 · 61 reviews" },
               ]}
               localities={[
-                "Baner",
-                "Aundh",
-                "Kothrud",
-                "Pashan",
-                "Bavdhan",
-                "Wakad",
+                "Arera Colony",
+                "Kolar Road",
+                "Shahpura",
+                "Trilanga",
+                "Bawadiya Kalan",
+                "Ayodhya Bypass",
               ]}
               localityHref={() => "/dev/components"}
             />
@@ -924,8 +924,8 @@ export default function ComponentGalleryPage() {
 
       <Hero
         headline="We show you what's behind the wall."
-        subtitle="Turnkey construction, interiors and renovation in Pune. We publish our rates, our payment milestones, and photographs of the concealed work before we close it up."
-        poster={{ src: "/dev/hero.png", alt: "" }}
+        subtitle="Turnkey construction, interiors and renovation in Bhopal. We publish our rates, our payment milestones, and photographs of the concealed work before we close it up."
+        poster={{ src: "/photos/hero.jpg", alt: "" }}
         fullHeight={false}
         actions={
           <>
@@ -966,7 +966,7 @@ export default function ComponentGalleryPage() {
       <FooterMega
         brandName="ZYVORA"
         foundedYear={2018}
-        conversionHeadline="Building in Pune? Let's talk about your site."
+        conversionHeadline="Building in Bhopal? Let's talk about your site."
         conversionActions={
           <>
             <Button variant="primary" size="lg">
@@ -1023,18 +1023,18 @@ export default function ComponentGalleryPage() {
           {
             title: "Contact",
             links: [
-              { label: "+91 98765 43210", href: "tel:+919876543210" },
+              { label: "+91 93998 17681", href: "tel:+919399817681" },
               { label: "WhatsApp", href: "/dev/components" },
-              { label: "hello@example.com", href: "mailto:hello@example.com" },
+              { label: "dhoteghanshyam9@gmail.com", href: "mailto:dhoteghanshyam9@gmail.com" },
             ],
           },
         ]}
         credentials={[
-          { label: "GSTIN", value: "27AABCZ1234M1Z5" },
-          { label: "Registration", value: "U45200PN2018PTC" },
+          { label: "GSTIN", value: "23AABCZ1234M1Z5" },
+          { label: "Registration", value: "U45200MP2018PTC" },
           { label: "Insurance", value: "CAR policy, active" },
         ]}
-        localities={["Baner", "Aundh", "Kothrud", "Pashan", "Bavdhan", "Wakad"]}
+        localities={["Arera Colony", "Kolar Road", "Shahpura", "Trilanga", "Bawadiya Kalan", "Ayodhya Bypass"]}
         localityHref={() => "/dev/components"}
         legalLinks={[
           { label: "Privacy", href: "/dev/components" },

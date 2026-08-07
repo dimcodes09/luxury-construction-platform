@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Our 38-Step Construction Process & 9 Payment Milestones",
   description:
-    "Explore ZYVORA's 38-step construction journey in Pune. Published 9-stage payment milestones, named engineer accountability, and complete handover document checklist.",
+    "Explore ZYVORA's 38-step construction journey in Bhopal. Published 9-stage payment milestones, named engineer accountability, and complete handover document checklist.",
 };
 
 const PHASES = [
@@ -296,7 +296,7 @@ export default function ProcessPage() {
               {PAYMENT_MILESTONES.map((m, i) => (
                 <div
                   key={m.label}
-                  className="flex flex-col rounded-md bg-basalt-850 p-4 hairline border-t-2 border-t-brass-500"
+                  className="flex flex-col rounded-md bg-basalt-800 p-4 hairline border-t-2 border-t-brass-500"
                 >
                   <span className="font-mono text-caption text-brass-400">
                     STAGE 0{i + 1} ({m.percent}%)
@@ -328,7 +328,7 @@ export default function ProcessPage() {
               <div key={phase.id} id={phase.id} className="flex flex-col gap-6">
                 <div className="flex flex-wrap items-baseline justify-between border-b border-border pb-4">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-heading-md text-brass-600 dark:text-brass-400">
+                    <span className="font-mono text-heading-md text-brass-700 dark:text-brass-400">
                       PHASE {phase.number}
                     </span>
                     <Heading as="h2" size="lg">
@@ -359,7 +359,7 @@ export default function ProcessPage() {
                           </Body>
                           <div className="mt-3 flex flex-wrap items-center gap-4 text-caption text-fg-muted font-mono">
                             <span className="flex items-center gap-1">
-                              <Icon icon={UserCheck} size={16} className="text-brass-500" />
+                              <Icon icon={UserCheck} size={16} className="text-brass-700" />
                               {step.role}
                             </span>
                             <span>•</span>
@@ -370,11 +370,11 @@ export default function ProcessPage() {
 
                       <div className="flex shrink-0 flex-col items-start md:items-end border-t md:border-t-0 border-border pt-4 md:pt-0">
                         <Label className="text-fg-muted">DELIVERABLE RECEIVED</Label>
-                        <span className="mt-1 font-sans text-body-sm font-medium text-brass-600 dark:text-brass-400">
+                        <span className="mt-1 font-sans text-body-sm font-medium text-brass-700 dark:text-brass-400">
                           {step.deliverable}
                         </span>
                         {step.paymentPoint && (
-                          <span className="mt-2 inline-flex items-center gap-1 rounded bg-brass-500/10 px-2 py-0.5 font-mono text-caption text-brass-600 dark:text-brass-400">
+                          <span className="mt-2 inline-flex items-center gap-1 rounded bg-brass-500/10 px-2 py-0.5 font-mono text-caption text-brass-700 dark:text-brass-400">
                             <Icon icon={CreditCard} size={16} />
                             Payment Milestone
                           </span>
@@ -407,20 +407,20 @@ export default function ProcessPage() {
             </Body>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3 mt-2">
-              <div className="p-4 rounded bg-basalt-50 dark:bg-basalt-800 hairline">
-                <Label className="text-brass-500">1. IMPACT ANALYSIS</Label>
+              <div className="p-4 rounded bg-basalt-050 dark:bg-basalt-800 hairline">
+                <Label className="text-brass-700">1. IMPACT ANALYSIS</Label>
                 <p className="mt-2 font-sans text-body-sm text-fg">
                   We calculate exact material cost differences and schedule impacts before taking action.
                 </p>
               </div>
-              <div className="p-4 rounded bg-basalt-50 dark:bg-basalt-800 hairline">
-                <Label className="text-brass-500">2. WRITTEN APPROVAL</Label>
+              <div className="p-4 rounded bg-basalt-050 dark:bg-basalt-800 hairline">
+                <Label className="text-brass-700">2. WRITTEN APPROVAL</Label>
                 <p className="mt-2 font-sans text-body-sm text-fg">
                   Both client and project engineer sign the Change Order document. Verbal requests are invalid.
                 </p>
               </div>
-              <div className="p-4 rounded bg-basalt-50 dark:bg-basalt-800 hairline">
-                <Label className="text-brass-500">3. ADDUCE TO BOQ</Label>
+              <div className="p-4 rounded bg-basalt-050 dark:bg-basalt-800 hairline">
+                <Label className="text-brass-700">3. ADDUCE TO BOQ</Label>
                 <p className="mt-2 font-sans text-body-sm text-fg">
                   The variation is added to the master payment schedule as an explicit line item.
                 </p>
@@ -468,10 +468,11 @@ export default function ProcessPage() {
 
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {HANDOVER_DOCUMENTS.map((doc, idx) => (
-              <div key={doc} className="flex items-start gap-3 rounded bg-basalt-850 p-4 hairline">
+              <div key={doc} className="flex items-start gap-3 rounded bg-basalt-800 p-4 hairline">
                 <Icon icon={CheckCircle2} size={20} className="mt-0.5 shrink-0 text-brass-400" />
                 <span className="font-sans text-body-sm text-basalt-200">
-                  <span className="font-mono text-caption text-brass-500 mr-2">#{idx + 1}</span>
+                  {/* §2.1.4 — dark surfaces take brass-300; brass-700 is 3.36:1 here. */}
+                  <span className="font-mono text-caption text-brass-300 mr-2">#{idx + 1}</span>
                   {doc}
                 </span>
               </div>

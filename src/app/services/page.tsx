@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Construction & Interior Services | Published Rates & Clear Scope",
   description:
-    "Explore our 9 specialised construction, renovation, and interior design services in Pune. Published per-sq-ft rates, equal-weight exclusions, and transparent contracts.",
+    "Explore our 9 specialised construction, renovation, and interior design services in Bhopal. Published per-sq-ft rates, equal-weight exclusions, and transparent contracts.",
 };
 
 const GROUP_LABELS: Record<ServiceGroupKey, { title: string; subtitle: string }> = {
@@ -229,7 +229,7 @@ export default async function ServicesIndexPage() {
                         body={service.headline + " " + service.definition}
                         outcomes={sampleOutcomes}
                         media={{
-                          src: `/dev/service-1.png`,
+                          src: `/photos/service-1.jpg`,
                           alt: service.name,
                         }}
                         ctaLabel="See full scope & pricing →"
@@ -267,7 +267,7 @@ export default async function ServicesIndexPage() {
               </thead>
               <tbody className="divide-y divide-basalt-800">
                 {COMPARISON_TABLE_DATA.map((row) => (
-                  <tr key={row.name} className="hover:bg-basalt-850/50">
+                  <tr key={row.name} className="hover:bg-basalt-800/50">
                     <td className="py-4 font-medium text-basalt-100">
                       <NextLink
                         href={row.href}

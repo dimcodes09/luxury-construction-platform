@@ -36,13 +36,13 @@ const PROJECT_TYPES = [
   { value: "commercial", label: "Commercial" },
 ] as const;
 
-const CITIES = ["Pune", "Mumbai", "Nashik", "Nagpur"] as const;
+const CITIES = ["Bhopal", "Mumbai", "Nashik", "Nagpur"] as const;
 
 export function MiniEstimator() {
   const router = useRouter();
   const [projectType, setProjectType] = useState<string>("new-construction");
   const [area, setArea] = useState<string>("");
-  const [city, setCity] = useState<string>("Pune");
+  const [city, setCity] = useState<string>("Bhopal");
 
   /* State travels as plain query params (FR-EST-11), so a shared link is
    * inspectable and the estimator can resume without re-entry. */
@@ -64,8 +64,8 @@ export function MiniEstimator() {
         </Display>
 
         <Body size="lg" className="mt-4 text-blueprint-100">
-          Three fields. You get a range, the breakdown behind it, and the full
-          list of what it excludes — before we ask for anything.
+          Tell us three things and we will come back with a costed range, what
+          it includes, and the full list of what it excludes.
         </Body>
 
         <form onSubmit={handleSubmit} className="mt-10">
@@ -123,14 +123,14 @@ export function MiniEstimator() {
               className="w-full sm:w-auto"
               iconTrailing={<Icon icon={ArrowRight} size={20} />}
             >
-              See the range
+              Get a cost estimate
             </Button>
 
-            {/* §0.5 — the number is never gated. Saying so up front is the
-             * whole trust play; hiding it is "the most common and most damaging
-             * mistake in this category". */}
+            {/* We quote by hand, so the honest promise is speed, not an
+             * instant number. Claiming "no email needed" would be false — the
+             * last step of the form asks for contact details. */}
             <p className="font-sans text-caption text-blueprint-300">
-              No email needed. The number comes first.
+              Five short steps. A real reply within one working day.
             </p>
           </div>
         </form>

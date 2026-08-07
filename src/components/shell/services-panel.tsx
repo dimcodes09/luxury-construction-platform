@@ -104,7 +104,7 @@ export function ServicesPanel({
            * the service names, because that is how they arrive. */}
           {SERVICE_GROUPS.map((group) => (
             <div key={group.key} className="col-span-3">
-              <Label className="block text-brass-600 dark:text-brass-300">
+              <Label className="block text-brass-700 dark:text-brass-300">
                 {group.label}
               </Label>
               <Datum className="mt-1 block normal-case text-fg-muted">
@@ -120,7 +120,7 @@ export function ServicesPanel({
                       onClick={onClose}
                       className="group block focus-visible:outline-2 focus-visible:outline-offset-2"
                     >
-                      <span className="block font-sans text-body-md text-fg transition-colors duration-fast group-hover:text-brass-600 dark:group-hover:text-brass-300">
+                      <span className="block font-sans text-body-md text-fg transition-colors duration-fast group-hover:text-brass-700 dark:group-hover:text-brass-300">
                         {service.label}
                       </span>
                       <span className="mt-0.5 block font-sans text-caption text-fg-muted">
@@ -137,7 +137,7 @@ export function ServicesPanel({
            * /materials, /gallery and /process are high-value pages a 5-item nav
            * cannot hold and a footer link will not surface. */}
           <div className="col-span-2">
-            <Label className="block text-brass-600 dark:text-brass-300">
+            <Label className="block text-brass-700 dark:text-brass-300">
               Explore
             </Label>
             <div className="datum-rule mt-4" />
@@ -149,7 +149,7 @@ export function ServicesPanel({
                     onClick={onClose}
                     className="group block focus-visible:outline-2 focus-visible:outline-offset-2"
                   >
-                    <span className="block font-sans text-body-sm text-fg transition-colors duration-fast group-hover:text-brass-600 dark:group-hover:text-brass-300">
+                    <span className="block font-sans text-body-sm text-fg transition-colors duration-fast group-hover:text-brass-700 dark:group-hover:text-brass-300">
                       {link.label}
                     </span>
                     <span className="mt-0.5 block font-sans text-caption text-fg-muted">

@@ -35,11 +35,11 @@ const GROUP_META: Record<
     title: "Build Services",
     tagline: "Turnkey Structural Construction",
     description:
-      "Greenfield home construction and complete turnkey building solutions in Pune. Foundation to handover under one contract, one budget, and one accountable engineer.",
+      "Greenfield home construction and complete turnkey building solutions in Bhopal. Foundation to handover under one contract, one budget, and one accountable engineer.",
     icon: Building2,
-    metaTitle: "Turnkey Home Construction Services in Pune | Build Group",
+    metaTitle: "Turnkey Home Construction Services in Bhopal | Build Group",
     metaDescription:
-      "Turnkey house construction and greenfield home building services in Pune. Published per-sq-ft rates, 9 payment milestones, and documented site supervision.",
+      "Turnkey house construction and greenfield home building services in Bhopal. Published per-sq-ft rates, 9 payment milestones, and documented site supervision.",
     faqs: [
       {
         question: "What is included in Turnkey Build Services?",
@@ -59,9 +59,9 @@ const GROUP_META: Record<
     description:
       "Full-home renovation, interior design, and commercial space transformations. Re-plan your existing footprint with zero structural risk and transparent timeline scheduling.",
     icon: RefreshCw,
-    metaTitle: "Home Renovation & Interior Transformation Services in Pune",
+    metaTitle: "Home Renovation & Interior Transformation Services in Bhopal",
     metaDescription:
-      "Complete home renovation and interior design services in Pune. Occupancy timeline scheduling, 3D visualisation, and explicit loss-framed avoidance panels.",
+      "Complete home renovation and interior design services in Bhopal. Occupancy timeline scheduling, 3D visualisation, and explicit loss-framed avoidance panels.",
     faqs: [
       {
         question: "Can we live in our home during a renovation?",
@@ -81,9 +81,9 @@ const GROUP_META: Record<
     description:
       "Precision finishing, waterproofing, modular kitchens, painting, and electrical upgrades. Delivered by in-house trained craftsmen with written warranty certificates.",
     icon: Paintbrush,
-    metaTitle: "Waterproofing, Modular Kitchen & Painting Services in Pune",
+    metaTitle: "Waterproofing, Modular Kitchen & Painting Services in Bhopal",
     metaDescription:
-      "Specialised finishing services in Pune: waterproofing, modular kitchens, false ceiling, painting, and electrical wiring with written warranties.",
+      "Specialised finishing services in Bhopal: waterproofing, modular kitchens, false ceiling, painting, and electrical wiring with written warranties.",
     faqs: [
       {
         question: "Do finish services carry a warranty?",
@@ -206,7 +206,7 @@ export default async function ServiceGroupHubPage({ params }: Props) {
                   areaSqft={project.builtUpArea}
                   year={project.completionYear}
                   scope={project.scope}
-                  image={{ src: project.heroImage.url || "/dev/project-1.png", alt: project.heroImage.alt || project.title }}
+                  image={{ src: project.heroImage.url || "/photos/project-1.jpg", alt: project.heroImage.alt || project.title }}
                 />
               ))}
             </div>

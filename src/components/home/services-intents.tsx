@@ -56,7 +56,7 @@ export function ServicesAsIntents() {
 
             <div className="relative">
               {/* The visitor's own words come first. */}
-              <Datum className="block normal-case text-brass-600 dark:text-brass-300">
+              <Datum className="block normal-case text-brass-700 dark:text-brass-300">
                 &ldquo;{group.intent}&rdquo;
               </Datum>
 
@@ -74,7 +74,7 @@ export function ServicesAsIntents() {
                       className="group flex min-h-target items-start justify-between gap-4 focus-visible:outline-2 focus-visible:outline-offset-2"
                     >
                       <span className="min-w-0">
-                        <span className="block font-sans text-body-md text-fg transition-colors duration-fast group-hover:text-brass-600 dark:group-hover:text-brass-300">
+                        <span className="block font-sans text-body-md text-fg transition-colors duration-fast group-hover:text-brass-700 dark:group-hover:text-brass-300">
                           {service.label}
                         </span>
                         <span className="mt-0.5 block font-sans text-caption text-fg-muted">

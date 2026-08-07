@@ -46,9 +46,9 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   // NFR-SEO-02 — hand-written, containing a number (§10.5).
-  title: "ZYVORA — Construction, Interiors & Renovation in Pune",
+  title: "ZYVORA — Construction, Interiors & Renovation in Bhopal",
   description:
-    "Turnkey construction and interiors in Pune. 61 homes delivered, 11.4 month median handover, published rates and payment milestones. We photograph the concealed work before we close it up.",
+    "Turnkey construction and interiors in Bhopal. 61 homes delivered, 11.4 month median handover, published rates and payment milestones. We photograph the concealed work before we close it up.",
 };
 
 export default async function HomePage() {
@@ -59,8 +59,8 @@ export default async function HomePage() {
     getFeaturedTestimonials(2),
   ]);
 
-  const phoneE164 = settings?.phoneE164 ?? "+919876543210";
-  const city = settings?.city ?? "Pune";
+  const phoneE164 = settings?.phoneE164 ?? "+919399817681";
+  const city = settings?.city ?? "Bhopal";
   const foundedYear = settings?.foundedYear ?? 2018;
 
   return (
@@ -101,7 +101,7 @@ export default async function HomePage() {
           datumLabel={`${city} · Since ${foundedYear}`}
           headline="We show you what's behind the wall."
           subtitle="Turnkey construction and interiors. Published prices. Published process. Photographed before we close it up."
-          poster={{ src: "/dev/hero.png", alt: "" }}
+          poster={{ src: "/photos/hero.jpg", alt: "" }}
           actions={
             <>
               {/* §4.1 — "Two CTAs, DELIBERATELY UNEQUAL." The estimator is
@@ -143,7 +143,7 @@ export default async function HomePage() {
        * Sits between the work grid and the before/after so the page has one
        * moment of held attention before the interactive comparison. */}
       <ShowcaseFrame
-        image={{ src: "/dev/after.png", alt: "A finished kitchen in Baner" }}
+        image={{ src: "/photos/after.jpg", alt: "A finished kitchen in Arera Colony" }}
         caption="Kitchen re-planned, 128 sq ft · ₹4.6 L · 5 weeks"
       />
 
@@ -160,8 +160,8 @@ export default async function HomePage() {
           />
           <div className="mt-12">
             <BeforeAfter
-              before={{ src: "/dev/before.png", alt: "Kitchen before the work" }}
-              after={{ src: "/dev/after.png", alt: "Kitchen after the work" }}
+              before={{ src: "/photos/before.jpg", alt: "Kitchen before the work" }}
+              after={{ src: "/photos/after.jpg", alt: "Kitchen after the work" }}
               caption="Kitchen re-planned, 128 sq ft · ₹4.6 L · 5 weeks"
             />
           </div>

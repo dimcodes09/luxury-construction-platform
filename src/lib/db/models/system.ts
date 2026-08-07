@@ -64,7 +64,7 @@ const localitySchema = new Schema(
     notes: { type: String },
     soilType: { type: String },
     commonTypologies: [{ type: String }],
-    // §4.9.1 regional multiplier, e.g. Baner 1.08. Mirrored onto the rate card
+    // §4.9.1 regional multiplier, e.g. Arera Colony 1.08. Mirrored onto the rate card
     // for estimate reproducibility; this is the editable source.
     rateMultiplier: { type: Number, default: 1 },
     status: { type: String, enum: PUBLISH_STATUS, default: "draft" },

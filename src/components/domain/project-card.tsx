@@ -127,7 +127,7 @@ export function ProjectCard({
           sq ft · <span className="font-mono tabular">{year}</span>
         </p>
 
-        <p className="mt-2 font-sans text-label uppercase text-brass-600 dark:text-brass-300">
+        <p className="mt-2 font-sans text-label uppercase text-brass-700 dark:text-brass-300">
           {scope}
         </p>
       </div>

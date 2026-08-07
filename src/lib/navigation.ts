@@ -124,7 +124,7 @@ export const EXPLORE_LINKS: (NavItem & { description: string })[] = [
   {
     label: "Cost guides",
     href: "/journal/category/cost-guides",
-    description: "What things actually cost in Pune, 2026",
+    description: "What things actually cost in Bhopal, 2026",
   },
 ];
 

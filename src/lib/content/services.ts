@@ -66,9 +66,9 @@ export const SERVICES: ServiceContent[] = [
     name: "House Construction",
     group: "build",
     order: 1,
-    metaTitle: "House Construction in Pune — Cost per sq ft, Process & Projects",
+    metaTitle: "House Construction in Bhopal — Cost per sq ft, Process & Projects",
     metaDescription:
-      "Turnkey house construction in Pune from ₹1,500/sq ft. Published rates, 9 payment milestones, and photographs of every slab and conduit before we close it up.",
+      "Turnkey house construction in Bhopal from ₹1,500/sq ft. Published rates, 9 payment milestones, and photographs of every slab and conduit before we close it up.",
     headline: "Built once. Built right. Documented throughout.",
     definition:
       "We build the whole house — structure, finishing and services — under one contract and one point of contact.",
@@ -193,9 +193,9 @@ export const SERVICES: ServiceContent[] = [
     name: "Turnkey Home Solutions",
     group: "build",
     order: 2,
-    metaTitle: "Turnkey Home Construction & Interiors in Pune — One Contract",
+    metaTitle: "Turnkey Home Construction & Interiors in Bhopal — One Contract",
     metaDescription:
-      "Construction and interiors on one contract in Pune, from ₹1,900/sq ft. One team from foundation to furniture, so no trade can blame another for a delay.",
+      "Construction and interiors on one contract in Bhopal, from ₹1,900/sq ft. One team from foundation to furniture, so no trade can blame another for a delay.",
     headline: "One contract. One number. One person accountable.",
     definition:
       "Construction and interiors delivered by the same team, on one contract, with one handover date.",
@@ -254,9 +254,9 @@ export const SERVICES: ServiceContent[] = [
     name: "Home Renovation",
     group: "transform",
     order: 3,
-    metaTitle: "Home Renovation in Pune — Occupancy Timeline & Published Costs",
+    metaTitle: "Home Renovation in Bhopal — Occupancy Timeline & Published Costs",
     metaDescription:
-      "Renovation in Pune from ₹900/sq ft, phased so you can keep living in the house. We publish which rooms are unusable and for how many weeks.",
+      "Renovation in Bhopal from ₹900/sq ft, phased so you can keep living in the house. We publish which rooms are unusable and for how many weeks.",
     headline: "Your house, improved — and you can still live in it.",
     definition:
       "Structural and finishing work on an occupied house, phased around the rooms you actually need.",
@@ -316,9 +316,9 @@ export const SERVICES: ServiceContent[] = [
     name: "Waterproofing",
     group: "transform",
     order: 4,
-    metaTitle: "Waterproofing Contractors in Pune — Membranes, Tests & Photos",
+    metaTitle: "Waterproofing Contractors in Bhopal — Membranes, Tests & Photos",
     metaDescription:
-      "Terrace, bathroom and basement waterproofing in Pune from ₹400/sq ft. Pressure-tested, photographed before closing, with a 5-year warranty on Bespoke.",
+      "Terrace, bathroom and basement waterproofing in Bhopal from ₹400/sq ft. Pressure-tested, photographed before closing, with a 5-year warranty on Bespoke.",
     headline: "The work you'll never see, and never think about again.",
     definition:
       "Membranes, treatments and pressure tests applied to wet areas, terraces and basements before anything covers them.",
@@ -377,9 +377,9 @@ export const SERVICES: ServiceContent[] = [
     name: "Painting",
     group: "transform",
     order: 5,
-    metaTitle: "House Painting in Pune — Preparation, Brands & Coverage Published",
+    metaTitle: "House Painting in Bhopal — Preparation, Brands & Coverage Published",
     metaDescription:
-      "Interior and exterior painting in Pune from ₹400/sq ft. Putty, primer and finish coats with the brand, grade and coat count written into the contract.",
+      "Interior and exterior painting in Bhopal from ₹400/sq ft. Putty, primer and finish coats with the brand, grade and coat count written into the contract.",
     headline: "Twelve coats of preparation. Two of paint.",
     definition:
       "Surface preparation, priming and finish coats, with the number of coats and the product grade written into the contract.",
@@ -438,9 +438,9 @@ export const SERVICES: ServiceContent[] = [
     name: "Electrical Work",
     group: "transform",
     order: 6,
-    metaTitle: "Electrical Contractors in Pune — Load Schedules & As-Built Drawings",
+    metaTitle: "Electrical Contractors in Bhopal — Load Schedules & As-Built Drawings",
     metaDescription:
-      "House wiring and re-wiring in Pune from ₹400/sq ft. FR conduit, calculated load schedules, every run photographed before plaster, and an as-built drawing you keep.",
+      "House wiring and re-wiring in Bhopal from ₹400/sq ft. FR conduit, calculated load schedules, every run photographed before plaster, and an as-built drawing you keep.",
     headline: "Every circuit mapped, labelled and handed to you.",
     definition:
       "Wiring, conduiting and distribution designed from a calculated load schedule, then documented as an as-built drawing.",
@@ -460,7 +460,7 @@ export const SERVICES: ServiceContent[] = [
     excluded: [
       "Light fittings, fans and appliances",
       "Chasing and plaster repair, if the work is in a finished house",
-      "MSEDCL meter application, deposits and load sanction",
+      "MPPKVVCL meter application, deposits and load sanction",
       "Home automation devices, though we conduit for them",
     ],
     tiers: [
@@ -487,7 +487,7 @@ export const SERVICES: ServiceContent[] = [
       { question: "Is concealed wiring safe?", answer: "Yes, in FR conduit with draw wires, so a cable can be replaced without breaking the wall." },
       { question: "Can you re-wire an occupied flat?", answer: "Yes, room by room. Chasing is noisy and dusty, so we do one zone at a time." },
       { question: "Why do you photograph the conduit?", answer: "So you can see what is behind the plaster, and so any future work knows where not to drill." },
-      { question: "Do you handle the MSEDCL connection?", answer: "We prepare the application and test report. Deposits and load sanction fees are paid by you directly." },
+      { question: "Do you handle the MPPKVVCL connection?", answer: "We prepare the application and test report. Deposits and load sanction fees are paid by you directly." },
       { question: "What earthing do you provide?", answer: "A chemical or plate earthing pit with a measured resistance value in the handover file." },
       { question: "Can you wire for home automation later?", answer: "We conduit with spare capacity now, so the devices can be added without breaking walls." },
     ],
@@ -500,9 +500,9 @@ export const SERVICES: ServiceContent[] = [
     name: "Interior Design",
     group: "finish",
     order: 7,
-    metaTitle: "Interior Designers in Pune — Drawings, Materials & Costs Published",
+    metaTitle: "Interior Designers in Bhopal — Drawings, Materials & Costs Published",
     metaDescription:
-      "Interior design and execution in Pune from ₹1,200/sq ft. Every drawing, material grade and joinery detail specified before a single sheet is cut.",
+      "Interior design and execution in Bhopal from ₹1,200/sq ft. Every drawing, material grade and joinery detail specified before a single sheet is cut.",
     headline: "Rooms that look like the people who live in them.",
     definition:
       "Design drawings, material specification and joinery detailing, executed by the team that drew them.",
@@ -532,7 +532,7 @@ export const SERVICES: ServiceContent[] = [
     avoid: [
       { title: "Joinery ordered from a mood board", consequence: "Shutters that do not clear the door swing you forgot to draw.", rupeeImpact: 85000 },
       { title: "Lighting decided after the ceiling is closed", consequence: "Surface fittings where recessed ones were intended.", rupeeImpact: 60000 },
-      { title: "MDF carcass in a Pune monsoon", consequence: "Swollen bases in bathrooms and kitchens within four years.", rupeeImpact: 130000 },
+      { title: "MDF carcass in a Bhopal monsoon", consequence: "Swollen bases in bathrooms and kitchens within four years.", rupeeImpact: 130000 },
       { title: "No hardware brand in the contract", consequence: "Hinges that sag by the second year and cannot be matched.", rupeeImpact: 55000 },
     ],
     process: [
@@ -561,9 +561,9 @@ export const SERVICES: ServiceContent[] = [
     name: "Modular Kitchen",
     group: "finish",
     order: 8,
-    metaTitle: "Modular Kitchen in Pune — Carcass, Hardware & Costs, Itemised",
+    metaTitle: "Modular Kitchen in Bhopal — Carcass, Hardware & Costs, Itemised",
     metaDescription:
-      "Modular kitchens in Pune from ₹1,200/sq ft. Carcass, shutters and hardware quoted by brand and grade, never as one number you cannot check.",
+      "Modular kitchens in Bhopal from ₹1,200/sq ft. Carcass, shutters and hardware quoted by brand and grade, never as one number you cannot check.",
     headline: "A kitchen that survives twenty monsoons.",
     definition:
       "Kitchen carcass, shutters, hardware and counter, specified and priced line by line.",
@@ -622,9 +622,9 @@ export const SERVICES: ServiceContent[] = [
     name: "False Ceiling",
     group: "finish",
     order: 9,
-    metaTitle: "False Ceiling in Pune — Framing Centres, Access Panels & Rates",
+    metaTitle: "False Ceiling in Bhopal — Framing Centres, Access Panels & Rates",
     metaDescription:
-      "Gypsum and POP false ceilings in Pune from ₹400/sq ft. Framing at published centres, access panels where the services actually are, and a 5-year warranty on Bespoke.",
+      "Gypsum and POP false ceilings in Bhopal from ₹400/sq ft. Framing at published centres, access panels where the services actually are, and a 5-year warranty on Bespoke.",
     headline: "Level, silent, and serviceable in ten years.",
     definition:
       "Suspended ceilings framed at specified centres, with access where the services above them will one day need reaching.",
@@ -688,27 +688,27 @@ export const SERVICE_GROUP_CONTENT: Record<
     intent: "I have a plot",
     statement:
       "You have land and a budget. What you need is one party who will price the whole thing honestly and then be accountable for it.",
-    metaTitle: "Build — House Construction & Turnkey Homes in Pune",
+    metaTitle: "Build — House Construction & Turnkey Homes in Bhopal",
     metaDescription:
-      "Two ways to build in Pune: construction only, or construction and interiors on one contract. Published rates from ₹1,500/sq ft and 9 payment milestones.",
+      "Two ways to build in Bhopal: construction only, or construction and interiors on one contract. Published rates from ₹1,500/sq ft and 9 payment milestones.",
   },
   transform: {
     label: "Transform",
     intent: "I have a house that needs work",
     statement:
       "Something is wrong, or tired, or leaking. The fix starts with finding out what is actually behind it.",
-    metaTitle: "Transform — Renovation, Waterproofing, Painting & Wiring in Pune",
+    metaTitle: "Transform — Renovation, Waterproofing, Painting & Wiring in Bhopal",
     metaDescription:
-      "Renovation, waterproofing, painting and electrical work in Pune. Phased around occupancy, photographed before closing, with published rates from ₹400/sq ft.",
+      "Renovation, waterproofing, painting and electrical work in Bhopal. Phased around occupancy, photographed before closing, with published rates from ₹400/sq ft.",
   },
   finish: {
     label: "Finish",
     intent: "I want it to look beautiful",
     statement:
       "The structure works. Now it needs to look like the people who live in it, and still look right in ten years.",
-    metaTitle: "Finish — Interior Design, Kitchens & Ceilings in Pune",
+    metaTitle: "Finish — Interior Design, Kitchens & Ceilings in Bhopal",
     metaDescription:
-      "Interior design, modular kitchens and false ceilings in Pune from ₹400/sq ft. Every material grade and hardware brand named in the contract.",
+      "Interior design, modular kitchens and false ceilings in Bhopal from ₹400/sq ft. Every material grade and hardware brand named in the contract.",
   },
 };
 

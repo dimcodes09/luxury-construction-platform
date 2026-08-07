@@ -60,7 +60,7 @@ export function ArticleCard({
 
       <div className={cn(article.image && "mt-4")}>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          <Datum className="text-brass-600 dark:text-brass-300">
+          <Datum className="text-brass-700 dark:text-brass-300">
             {article.category}
           </Datum>
           <span aria-hidden="true" className="h-3 w-px bg-hairline" />

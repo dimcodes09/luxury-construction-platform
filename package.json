@@ -10,7 +10,9 @@
     "seed:dev": "tsx src/lib/db/seed-cli.ts --dev",
     "placeholders": "node scripts/make-dev-placeholders.mjs",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "photos": "node scripts/fetch-photos.mjs",
+    "audit:colors": "node scripts/audit-colors.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

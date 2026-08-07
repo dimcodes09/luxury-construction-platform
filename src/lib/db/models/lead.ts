@@ -4,6 +4,7 @@ import {
   BUDGET_BANDS,
   LEAD_STATUSES,
   PROJECT_TYPES,
+  TIERS,
   baseSchemaOptions,
   defineModel,
   withBaseFields,
@@ -39,6 +40,15 @@ const leadSchema = new Schema(
     // FR-LEAD-03: "not sure yet" is a first-class option, not a missing value.
     budgetBand: { type: String, enum: [...BUDGET_BANDS, "not-sure"], required: true },
     message: { type: String },
+
+    /* Set by the /estimate enquiry form. The site no longer computes a figure
+     * — the owner reviews the brief in admin and quotes manually — so the tier
+     * and site condition the visitor selected are the estimating inputs that
+     * have to survive into the back office. */
+    tier: { type: String, enum: [...TIERS, null], default: null },
+    siteCondition: { type: String, default: null },
+    floors: { type: Number, default: null },
+    addons: [{ type: String }],
 
     source: {
       page: { type: String, required: true },

@@ -37,7 +37,7 @@ export function ProcessStrip() {
         action={
           <NextLink
             href="/process"
-            className="inline-flex items-center gap-2 font-sans text-body-md text-brass-600 underline-wipe focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-brass-300"
+            className="inline-flex items-center gap-2 font-sans text-body-md text-brass-700 underline-wipe focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-brass-300"
           >
             Read the process
             <Icon icon={ArrowRight} size={20} />
@@ -65,7 +65,7 @@ export function ProcessStrip() {
           >
             {/* Mobile: the vertical rule running through the numbers. */}
             <div className="relative flex flex-col items-center lg:hidden">
-              <span className="grid size-10 shrink-0 place-items-center rounded-full border border-accent bg-canvas font-mono text-datum text-brass-600 dark:text-brass-300">
+              <span className="grid size-10 shrink-0 place-items-center rounded-full border border-accent bg-canvas font-mono text-datum text-brass-700 dark:text-brass-300">
                 {step.number}
               </span>
               {index < STEPS.length - 1 ? (
@@ -79,7 +79,7 @@ export function ProcessStrip() {
             {/* Desktop: the horizontal rule above each step. */}
             <div className="hidden lg:block">
               <div className="datum-rule bg-accent" />
-              <Datum className="mt-4 block text-brass-600 dark:text-brass-300">
+              <Datum className="mt-4 block text-brass-700 dark:text-brass-300">
                 {step.number}
               </Datum>
             </div>

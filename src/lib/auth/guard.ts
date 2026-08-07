@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 
-import { auth, toRole } from "./index";
+import { getAuth, toRole } from "./index";
 import {
   ForbiddenError,
   assertCan,
@@ -44,6 +44,7 @@ export class UnauthenticatedError extends Error {
 
 /** Reads the current admin session. Returns null when signed out. */
 export async function getAdminContext(): Promise<AdminContext | null> {
+  const auth = await getAuth();
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session?.user) return null;
 

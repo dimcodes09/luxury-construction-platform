@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return {};
 
   return {
-    title: `${service.name} in Pune | ${service.metaTitle}`,
+    title: `${service.name} in Bhopal | ${service.metaTitle}`,
     description: service.metaDescription,
   };
 }
@@ -111,7 +111,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <div className="lg:col-span-5">
               <div className="relative aspect-4/3 w-full overflow-hidden rounded-md bg-basalt-100 hairline">
                 <Image
-                  src={`/dev/service-1.png`}
+                  src={`/photos/service-1.jpg`}
                   alt={service.name}
                   fill
                   priority
@@ -139,7 +139,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 key={scenario.title}
                 className="flex flex-col rounded-md bg-bg p-6 hairline"
               >
-                <span className="font-mono text-caption text-brass-600 dark:text-brass-400">
+                <span className="font-mono text-caption text-brass-700 dark:text-brass-400">
                   SCENARIO 0{i + 1}
                 </span>
                 <Heading as="h3" size="sm" className="mt-3">
@@ -259,7 +259,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
                 <div className="mt-8 pt-6 border-t border-border">
                   <Label className="block text-fg-muted">TYPICAL EXAMPLE (1,500 SQ FT)</Label>
-                  <Numeral size="md" className="mt-1 block text-brass-600 dark:text-brass-400">
+                  <Numeral size="md" className="mt-1 block text-brass-700 dark:text-brass-400">
                     ₹{((tier.rateMin * service.exampleArea) / 100000).toFixed(1)} L – ₹
                     {((tier.rateMax * service.exampleArea) / 100000).toFixed(1)} L
                   </Numeral>
@@ -318,7 +318,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
             <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {occupancyTimeline.map((item) => (
-                <div key={item.period} className="rounded-md bg-basalt-850 p-6 hairline">
+                <div key={item.period} className="rounded-md bg-basalt-800 p-6 hairline">
                   <span className="font-mono text-caption text-brass-400">{item.period}</span>
                   <Heading as="h4" size="sm" className="mt-2 text-basalt-100">
                     {item.status}
@@ -391,7 +391,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   areaSqft={project.builtUpArea}
                   year={project.completionYear}
                   scope={project.scope}
-                  image={{ src: project.heroImage.url || "/dev/project-1.png", alt: project.heroImage.alt || project.title }}
+                  image={{ src: project.heroImage.url || "/photos/project-1.jpg", alt: project.heroImage.alt || project.title }}
                 />
               ))}
             </div>
@@ -414,7 +414,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 name: "Ultratech OPC 53 Grade",
                 brand: "Ultratech",
                 grade: "Grade 53 Structural",
-                image: { src: "/dev/material-1.png", alt: "Ultratech Cement" },
+                image: { src: "/photos/material-1.jpg", alt: "Ultratech Cement" },
               }}
             />
             <MaterialSwatch
@@ -422,7 +422,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 name: "Tata Tiscon Fe550D TMT",
                 brand: "Tata Tiscon",
                 grade: "Fe550D Ductile",
-                image: { src: "/dev/material-2.png", alt: "Tata Tiscon Steel" },
+                image: { src: "/photos/material-2.jpg", alt: "Tata Tiscon Steel" },
               }}
             />
             <MaterialSwatch
@@ -430,7 +430,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 name: "Grohe Eurosmart Fittings",
                 brand: "Grohe",
                 grade: "Chrome Brass",
-                image: { src: "/dev/material-3.png", alt: "Grohe CP Fittings" },
+                image: { src: "/photos/material-3.jpg", alt: "Grohe CP Fittings" },
               }}
             />
             <MaterialSwatch
@@ -438,7 +438,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 name: "Saint-Gobain Gyproc 12.5mm",
                 brand: "Saint-Gobain",
                 grade: "Moisture Resistant",
-                image: { src: "/dev/material-4.png", alt: "Saint-Gobain Gyproc" },
+                image: { src: "/photos/material-4.jpg", alt: "Saint-Gobain Gyproc" },
               }}
             />
           </div>
@@ -456,8 +456,8 @@ export default async function ServiceDetailPage({ params }: Props) {
 
           <div className="mt-12">
             <BeforeAfter
-              before={{ src: "/dev/before.png", alt: "Before renovation" }}
-              after={{ src: "/dev/after.png", alt: "After renovation" }}
+              before={{ src: "/photos/before.jpg", alt: "Before renovation" }}
+              after={{ src: "/photos/after.jpg", alt: "After renovation" }}
               caption="Kitchen re-planned, 128 sq ft · ₹4.6 L · 5 weeks"
             />
           </div>

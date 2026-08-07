@@ -79,7 +79,10 @@
   --text-primary: var(--ink-900);
   --text-secondary: var(--ink-700);
   --text-muted: var(--ink-500);
-  --text-accent: var(--brass-600);
+  /* §9.4 — brass-600 is 3.82:1 on canvas: AA for large text only. Small accent
+   * text uses brass-700 (5.15:1). brass-600 remains correct for large display
+   * accents and for fills. */
+  --text-accent: var(--brass-700);
   --text-inverse: var(--basalt-050);
 
   --border-hairline: var(--basalt-200);

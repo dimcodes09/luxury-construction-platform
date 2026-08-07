@@ -281,7 +281,7 @@ export function Header({
                   : "text-fg-muted hover:text-fg",
               )}
             >
-              <Icon icon={Star} size={16} className="fill-brass-500 text-brass-500" />
+              <Icon icon={Star} size={16} className="fill-brass-500 text-brass-700" />
               {rating.value.toFixed(1)}
               <span className="opacity-70">({rating.count})</span>
             </NextLink>

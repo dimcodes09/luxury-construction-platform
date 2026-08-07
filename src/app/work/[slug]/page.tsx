@@ -42,7 +42,7 @@ import {
  *
  * Every section below is therefore guarded on the data it renders, not on a
  * flag. `npm run seed:dev` produces six fixtures with varied completeness;
- * /work/wakad-flat-refresh is the sparse one and must render only 4 of the 13.
+ * /work/ayodhya-flat-refresh is the sparse one and must render only 4 of the 13.
  */
 
 export const revalidate = 3600; // NFR-PERF-08
@@ -82,7 +82,7 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   const related = await getRelatedProjects(project, 3);
-  const phoneE164 = settings?.phoneE164 ?? "+919876543210";
+  const phoneE164 = settings?.phoneE164 ?? "+919399817681";
 
   return (
     <SiteShell
@@ -238,7 +238,7 @@ export default async function ProjectPage({
 
           {/* ══ 5 · BEFORE / AFTER ═══════════════════════════════════════
            * §4.4: 2–4 pairs with cost and duration captions.
-           * Fixture check: kothrud-terrace-flat has none. */}
+           * Fixture check: shahpura-terrace-flat has none. */}
           {project.beforeAfter.length > 0 ? (
             <Section rhythm="standard" container="full" className="px-0">
               <SectionHeader
@@ -261,7 +261,7 @@ export default async function ProjectPage({
 
           {/* ══ 6 · BEHIND THE WALL ══════════════════════════════════════
            * §0.8 ranks this the most defensible differentiator on the site.
-           * Fixture check: bavdhan-kitchen and wakad-flat-refresh have none. */}
+           * Fixture check: bawadiya-kitchen and ayodhya-flat-refresh have none. */}
           {project.behindTheWall.length > 0 ? (
             <Section rhythm="standard" container="full" className="px-0">
               <BehindTheWall
@@ -307,7 +307,7 @@ export default async function ProjectPage({
           ) : null}
 
           {/* ══ 8 · MATERIALS ════════════════════════════════════════════
-           * Fixture check: bavdhan-kitchen and wakad-flat-refresh have none. */}
+           * Fixture check: bawadiya-kitchen and ayodhya-flat-refresh have none. */}
           {project.materials.length > 0 ? (
             <Section rhythm="standard" container="full" className="px-0">
               <SectionHeader
@@ -336,7 +336,7 @@ export default async function ProjectPage({
           ) : null}
 
           {/* ══ 9 · TIMELINE ═════════════════════════════════════════════
-           * Fixture check: bavdhan-kitchen and wakad-flat-refresh have none. */}
+           * Fixture check: bawadiya-kitchen and ayodhya-flat-refresh have none. */}
           {project.timeline.length > 0 ? (
             <Section rhythm="standard" container="full" className="px-0">
               <SectionHeader index="07" label="Timeline" title="Actual dates." />
@@ -353,7 +353,7 @@ export default async function ProjectPage({
                 {project.timeline.map((milestone) => (
                   <li key={milestone.label} className="flex-1">
                     <div className="datum-rule bg-accent" />
-                    <Datum className="mt-3 block text-brass-600 dark:text-brass-300">
+                    <Datum className="mt-3 block text-brass-700 dark:text-brass-300">
                       {milestone.date
                         ? new Date(milestone.date).toLocaleDateString("en-IN", {
                             month: "short",
@@ -436,7 +436,7 @@ export default async function ProjectPage({
 
       {/* ══ 10 · CLIENT TESTIMONIAL ══════════════════════════════════════
        * §4.4: full-width on basalt-900, single quote at display-lg.
-       * Fixture check: pashan-duplex and wakad-flat-refresh have none. */}
+       * Fixture check: trilanga-duplex and ayodhya-flat-refresh have none. */}
       {project.testimonial ? (
         <section className="bg-basalt-900 py-section-feature">
           {/* §7.7 project §10 "Testimonial": M1, top 80%. */}
@@ -475,7 +475,7 @@ export default async function ProjectPage({
        * visitor is already imagining themselves in this project."
        * Needs a published per-sq-ft figure, so it is omitted when the client
        * has not permitted one (DM-01 makes actualCostPerSqft nullable).
-       * Fixture check: wakad-flat-refresh has none. */}
+       * Fixture check: ayodhya-flat-refresh has none. */}
       {project.actualCostPerSqft ? (
         <section className="bg-blueprint-700 py-section">
           <div className="container-narrow">
@@ -494,7 +494,7 @@ export default async function ProjectPage({
             </Body>
             <Button asChild variant="accent" size="lg" className="mt-8">
               <NextLink
-                href={`/estimate?projectType=${project.type}&area=${project.builtUpArea}&city=Pune`}
+                href={`/estimate?projectType=${project.type}&area=${project.builtUpArea}&city=Bhopal`}
               >
                 Estimate this project
               </NextLink>

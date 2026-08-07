@@ -33,20 +33,20 @@ export const metadata: Metadata = {
 export default function ShellHarnessPage() {
   return (
     <SiteShell
-      phoneE164="+919876543210"
+      phoneE164="+919399817681"
       rating={{ value: 4.9, count: 61 }}
       whatsappContext="Ridgeline House project"
       dockPerson={{
         firstName: "Priya",
         role: "Client Relations",
         responseNote: "usually replies in 20 minutes",
-        photo: { src: "/dev/team-1.png", alt: "" },
+        photo: { src: "/photos/team-1.jpg", alt: "" },
       }}
       featuredProject={{
         title: "Ridgeline House",
         href: "/work/ridgeline-house",
-        locality: "Baner · 2025",
-        image: { src: "/dev/project-1.png", alt: "" },
+        locality: "Arera Colony · 2025",
+        image: { src: "/photos/project-1.jpg", alt: "" },
       }}
     >
       {/* data-header-dark is what the header's IntersectionObserver watches to
@@ -54,8 +54,8 @@ export default function ShellHarnessPage() {
       <div data-header-dark>
         <Hero
           headline="We show you what's behind the wall."
-          subtitle="Turnkey construction, interiors and renovation in Pune. We publish our rates, our payment milestones, and photographs of the concealed work before we close it up."
-          poster={{ src: "/dev/hero.png", alt: "" }}
+          subtitle="Turnkey construction, interiors and renovation in Bhopal. We publish our rates, our payment milestones, and photographs of the concealed work before we close it up."
+          poster={{ src: "/photos/hero.jpg", alt: "" }}
           actions={
             <>
               <Button variant="accent" size="lg">

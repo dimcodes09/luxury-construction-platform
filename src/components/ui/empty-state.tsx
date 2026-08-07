@@ -38,7 +38,7 @@ export function EmptyState({
         className,
       )}
     >
-      <div aria-hidden="true" className="text-brass-500">
+      <div aria-hidden="true" className="text-brass-700">
         {illustration ?? <MonogramPlate />}
       </div>
 

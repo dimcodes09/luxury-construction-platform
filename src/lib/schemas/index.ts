@@ -11,3 +11,4 @@ export * from "./lead";
 export * from "./estimate";
 export * from "./generation";
 export * from "./subscribe";
+export * from "./enquiry";

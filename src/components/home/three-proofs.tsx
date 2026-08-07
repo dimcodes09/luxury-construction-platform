@@ -21,10 +21,10 @@ import { Heading, Body } from "@/components/foundation/typography";
 const PROOFS = [
   {
     icon: Receipt,
-    title: "A published price",
-    body: "Our rate card is on this site. Run the estimator and see the same ranges we quote from.",
+    title: "A written exclusions list",
+    body: "Every quote names what it does not cover. Most of the industry leaves that conversation until it is expensive.",
     href: "/estimate",
-    linkLabel: "See the range",
+    linkLabel: "Get a cost estimate",
   },
   {
     icon: FileText,
@@ -69,7 +69,7 @@ export function ThreeProofs() {
             <Icon
               icon={proof.icon}
               size={32}
-              className="text-brass-600 dark:text-brass-300"
+              className="text-brass-700 dark:text-brass-300"
             />
 
             <Heading as="h3" size="md" className="mt-6">
@@ -83,7 +83,7 @@ export function ThreeProofs() {
             {/* §10.3 — the nav lexicon. `Learn more` and `Explore` are banned. */}
             <NextLink
               href={proof.href}
-              className="mt-6 inline-flex items-center gap-2 font-sans text-body-sm text-brass-600 underline-wipe focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-brass-300"
+              className="mt-6 inline-flex items-center gap-2 font-sans text-body-sm text-brass-700 underline-wipe focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-brass-300"
             >
               {proof.linkLabel}
               <Icon icon={ArrowRight} size={16} />
