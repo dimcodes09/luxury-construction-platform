@@ -52,12 +52,12 @@ export function SectionHeader({
         )}
       >
         <div className={cn(align === "center" && "flex flex-col items-center")}>
-          <Heading as="h2" size="xl" data-motion="reveal">
+          <Heading as="h2" size="xl" data-motion="M1">
             {title}
           </Heading>
 
           {body ? (
-            <Body size="lg" className="mt-4" data-motion="reveal">
+            <Body size="lg" className="mt-4" data-motion="M1">
               {body}
             </Body>
           ) : null}

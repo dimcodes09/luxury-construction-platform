@@ -40,7 +40,7 @@ export function DatumLine({
     >
       {/* The rule. data-motion marks it for the M2 pass (§7.7). */}
       <div
-        data-motion="rule-draw"
+        data-motion="M2"
         className="datum-rule min-w-0 flex-1 origin-left"
       />
 

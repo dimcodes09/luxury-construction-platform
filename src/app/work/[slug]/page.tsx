@@ -100,7 +100,12 @@ export default async function ProjectPage({
        * line, project name and the locality/area/year caption.
        * Always present — heroImage is required by DM-01. */}
       <div data-header-dark>
-        <section className="relative h-hero-project min-h-100 w-full overflow-hidden bg-basalt-900">
+        {/* §7.7 project §1 "Hero image": M3 at -8%, scrub 0.6. */}
+        <section
+          data-motion="M3"
+          data-motion-parallax="8"
+          className="relative h-hero-project min-h-100 w-full overflow-hidden bg-basalt-900"
+        >
           <Image
             src={project.heroImage.url}
             alt={project.heroImage.alt}
@@ -191,7 +196,17 @@ export default async function ProjectPage({
                 label="Drawings"
                 title="The plan, as drawn."
               />
-              <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+              {/* §7.7 project §4: stroke-dashoffset draw, 1400ms, stagger
+                * 200ms, once — "THE SIGNATURE MOMENT OF THE PAGE". It only
+                * fires on inline SVG; raster drawings fall back to M1 so the
+                * section still enters rather than sitting inert. */}
+              <div
+                data-motion="M1"
+                data-motion-children=":scope > figure"
+                data-motion-stagger="200"
+                data-motion-start="top 75%"
+                className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2"
+              >
                 {project.drawings.map((drawing, index) => (
                   <figure
                     key={`${drawing.type}-${index}`}
@@ -271,7 +286,15 @@ export default async function ProjectPage({
           {project.gallery.length > 0 ? (
             <Section rhythm="standard" container="full" className="px-0">
               <SectionHeader index="05" label="Gallery" title="The finished rooms." />
-              <div className="mt-10">
+              {/* §7.7 project §7 "Gallery": M1 batch, stagger 50ms, top 90%. */}
+              <div
+                data-motion="M1"
+                data-motion-batch=""
+                data-motion-children="figure, img"
+                data-motion-stagger="50"
+                data-motion-start="top 90%"
+                className="mt-10"
+              >
                 <GalleryMasonry
                   images={project.gallery.map((image) => ({
                     src: image.url,
@@ -317,7 +340,16 @@ export default async function ProjectPage({
           {project.timeline.length > 0 ? (
             <Section rhythm="standard" container="full" className="px-0">
               <SectionHeader index="07" label="Timeline" title="Actual dates." />
-              <ol className="mt-10 flex flex-col gap-8 lg:flex-row lg:gap-6">
+              {/* §7.7 project §9 "Timeline": M2, the rule draws along the
+                * timeline. Scrubbed in the map; fired once here, because a
+                * 4-item strip finishes drawing before a scrub would even
+                * engage on a short page. */}
+              <ol
+                data-motion="M2"
+                data-motion-children=".datum-rule"
+                data-motion-stagger="120"
+                className="mt-10 flex flex-col gap-8 lg:flex-row lg:gap-6"
+              >
                 {project.timeline.map((milestone) => (
                   <li key={milestone.label} className="flex-1">
                     <div className="datum-rule bg-accent" />
@@ -407,7 +439,12 @@ export default async function ProjectPage({
        * Fixture check: pashan-duplex and wakad-flat-refresh have none. */}
       {project.testimonial ? (
         <section className="bg-basalt-900 py-section-feature">
-          <div className="container-narrow text-center">
+          {/* §7.7 project §10 "Testimonial": M1, top 80%. */}
+          <div
+            data-motion="M1"
+            data-motion-start="top 80%"
+            className="container-narrow text-center"
+          >
             <Display as="blockquote" size="lg" className="mx-auto text-basalt-050">
               &ldquo;{project.testimonial.quote}&rdquo;
             </Display>
@@ -566,7 +603,13 @@ function FactTable({ project }: { project: ProjectDetail }) {
       <Datum className="block text-blueprint-500 dark:text-blueprint-300">
         Facts
       </Datum>
-      <dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2">
+      {/* §7.7 project §2 "Fact table rows": M1, stagger 40ms, top 85%. */}
+      <dl
+        data-motion="M1"
+        data-motion-children=":scope > div"
+        data-motion-stagger="40"
+        className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2"
+      >
         {facts.map((fact) => (
           <div
             key={fact.label}

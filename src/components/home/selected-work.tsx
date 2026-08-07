@@ -91,7 +91,14 @@ export function SelectedWork({
       </div>
 
       {rest.length > 0 ? (
-        <div className="mt-6 hidden grid-cols-2 gap-6 md:grid lg:grid-cols-4">
+        <div
+          data-motion="M1"
+          data-motion-batch=""
+          data-motion-children=":scope > *"
+          data-motion-stagger="60"
+          data-motion-start="top 88%"
+          className="mt-6 hidden grid-cols-2 gap-6 md:grid lg:grid-cols-4"
+        >
           {rest.map((project, index) => (
             <ProjectCard
               key={project.slug}

@@ -55,56 +55,87 @@ export function Header({
 
   const lastScrollY = useRef(0);
 
-  /* Directional collapse. Reads scrollY inside rAF so a fast flick does not
-   * queue dozens of state updates — §7.3 forbids layout-triggering work on
-   * scroll, and setState per scroll event is exactly that. */
+  /* Collapse, direction, and context colour — all resolved in ONE rAF per
+   * scroll frame. §7.3 forbids layout-triggering work on scroll, and setState
+   * per scroll event is exactly that.
+   *
+   * §3.5 asks for the colour inversion to key off the section boundary rather
+   * than a scroll threshold, "robust to variable hero heights". The first
+   * attempt used an IntersectionObserver with rootMargin "-96px 0px -100% 0px"
+   * to make a thin detection band at the top of the viewport. That margin is
+   * arithmetically impossible: it shrinks the root by 96px from the top AND by
+   * a full viewport height from the bottom, so the root rect ends up NEGATIVE
+   * and the observer can never report an intersection. The header therefore
+   * never inverted, in any browser.
+   *
+   * A direct rect test gives the same section-boundary behaviour, is exact at
+   * every scroll position rather than only at crossings, and has no dependency
+   * on compositing — so it also works in headless and background tabs. There
+   * are at most a couple of marked sections per page, so the cost is trivial. */
   useEffect(() => {
     let frame: number | undefined;
 
-    const onScroll = () => {
-      if (frame !== undefined) return;
-      frame = requestAnimationFrame(() => {
-        frame = undefined;
-        const y = window.scrollY;
-        const goingDown = y > lastScrollY.current;
+    const measure = () => {
+      frame = undefined;
 
-        setCollapsed(y > 120);
-        // Never hidden at the top, and never while a panel is open.
-        setHidden(goingDown && y > 240);
-        lastScrollY.current = y;
+      const y = window.scrollY;
+      const goingDown = y > lastScrollY.current;
+
+      setCollapsed(y > 120);
+      // Never hidden at the top, and never while a panel is open.
+      setHidden(goingDown && y > 240);
+      lastScrollY.current = y;
+
+      /* Is a dark section behind the header right now? The header occupies the
+       * top ~84px, so test the band just below its midline. */
+      const probe = 48;
+      const darkSections = document.querySelectorAll("[data-header-dark]");
+      let dark = false;
+      darkSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= probe && rect.bottom >= probe) dark = true;
       });
+      setOnDark(dark);
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    /* Polled from rAF, NOT from a scroll listener.
+     *
+     * Lenis (§7.5) takes over scrolling on desktop and drives position itself.
+     * With it active, the native `scroll` event on window is unreliable — it
+     * did not fire at all in testing while scrollTop moved from 0 to 900 — so a
+     * header wired to that event simply stops updating after mount. That is
+     * what left it light-on-light over the dark hero.
+     *
+     * A rAF poll is correct whether Lenis is running or not, on touch or
+     * pointer, and needs no coupling between the shell and the motion layer.
+     * It early-outs when the scroll position has not changed, so the steady
+     * state is one cheap comparison per frame. */
+    let running = true;
+    let lastMeasured = -1;
+
+    const tick = () => {
+      if (!running) return;
+      const y = window.scrollY;
+      if (y !== lastMeasured) {
+        lastMeasured = y;
+        measure();
+      }
+      frame = requestAnimationFrame(tick);
+    };
+
+    // Run once immediately so the header is correct on first paint rather than
+    // rendering light over a dark hero for a frame.
+    measure();
+    frame = requestAnimationFrame(tick);
+
+    const onResize = () => measure();
+    window.addEventListener("resize", onResize, { passive: true });
+
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      running = false;
+      window.removeEventListener("resize", onResize);
       if (frame !== undefined) cancelAnimationFrame(frame);
     };
-  }, []);
-
-  /* §3.5 context-aware colour, via IntersectionObserver against elements the
-   * page marks with data-header-dark (the hero does this). Robust to any hero
-   * height, which a scroll threshold is not. */
-  useEffect(() => {
-    const darkSections = document.querySelectorAll("[data-header-dark]");
-    if (darkSections.length === 0) {
-      setOnDark(false);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          // The header sits in the top 96px; a dark section is "behind" it
-          // while its bottom edge is below that line.
-          setOnDark(entry.isIntersecting);
-        }
-      },
-      { rootMargin: "-96px 0px -100% 0px", threshold: 0 },
-    );
-
-    darkSections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
   }, [pathname]);
 
   // §3.5 — closes on route change.
@@ -115,7 +146,11 @@ export function Header({
 
   const closeServices = useCallback(() => setServicesOpen(false), []);
 
-  const inverted = onDark && !collapsed;
+  /* Inversion depends ONLY on what is behind the header, never on whether it
+   * has collapsed. Tying it to !collapsed meant that the instant you scrolled
+   * past 120px over a dark hero, the bar flipped to a light background while
+   * the hero behind it stayed black — the grey band bug. */
+  const inverted = onDark;
 
   return (
     <header
@@ -125,8 +160,11 @@ export function Header({
         "transition-transform duration-base ease-standard",
         // Never fully hidden while a panel is open — the CTA must stay reachable.
         hidden && !servicesOpen && !drawerOpen && "-translate-y-full",
-        collapsed &&
-          "border-b border-hairline bg-canvas/82 backdrop-blur-md backdrop-saturate-150",
+        // §3.5 — translucent + blurred on scroll, but tinted to match whatever
+        // it is sitting over. A light scrim over a dark hero reads as a bug.
+        collapsed && "backdrop-blur-lg backdrop-saturate-150",
+        collapsed && !inverted && "border-b border-hairline bg-canvas/85",
+        collapsed && inverted && "border-b border-basalt-700/60 bg-basalt-950/70",
       )}
     >
       <div
@@ -181,10 +219,20 @@ export function Header({
                       aria-expanded={servicesOpen}
                       aria-controls="services-panel"
                       className={cn(
-                        "underline-wipe py-2 font-sans text-body-md",
+                        "relative py-2 font-sans text-body-md tracking-tight",
+                        "transition-colors duration-fast ease-standard",
                         "focus-visible:outline-2 focus-visible:outline-offset-2",
-                        inverted ? "text-basalt-050" : "text-fg-secondary",
-                        (active || servicesOpen) && "text-fg",
+                        // §3.5 — a 1px brass underline, wiping from the left.
+                        "after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px",
+                        "after:origin-left after:scale-x-0 after:bg-brass-500",
+                        "after:transition-transform after:duration-base after:ease-standard",
+                        "hover:after:scale-x-100",
+                        inverted
+                          ? "text-basalt-300 hover:text-basalt-050"
+                          : "text-fg-secondary hover:text-fg",
+                        (active || servicesOpen) &&
+                          (inverted ? "text-basalt-050" : "text-fg") +
+                            " after:scale-x-100",
                       )}
                     >
                       {item.label}
@@ -194,12 +242,19 @@ export function Header({
                       href={item.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "underline-wipe py-2 font-sans text-body-md",
+                        "relative py-2 font-sans text-body-md tracking-tight",
+                        "transition-colors duration-fast ease-standard",
                         "focus-visible:outline-2 focus-visible:outline-offset-2",
-                        inverted ? "text-basalt-050" : "text-fg-secondary",
+                        "after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px",
+                        "after:origin-left after:scale-x-0 after:bg-brass-500",
+                        "after:transition-transform after:duration-base after:ease-standard",
+                        "hover:after:scale-x-100",
+                        inverted
+                          ? "text-basalt-300 hover:text-basalt-050"
+                          : "text-fg-secondary hover:text-fg",
                         active &&
-                          // §3.5 — active item carries a 1px brass underline.
-                          "text-fg underline decoration-brass-500 decoration-1 underline-offset-6",
+                          (inverted ? "text-basalt-050" : "text-fg") +
+                            " after:scale-x-100",
                       )}
                     >
                       {item.label}

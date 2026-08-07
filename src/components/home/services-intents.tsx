@@ -32,7 +32,17 @@ export function ServicesAsIntents() {
         title="Start from what you have, not from what it's called."
       />
 
-      <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
+      {/* §7.7 S06 "Service columns": M1, stagger 80ms, top 85%.
+        * The oversized numerals are listed as M3 at -4%, but they sit inside
+        * the same column as the text; parallaxing them would drag the copy.
+        * They stay static — §7.2 caps M3 at 2 elements per page and the hero
+        * already claims one. */}
+      <div
+        data-motion="M1"
+        data-motion-children=":scope > *"
+        data-motion-stagger="80"
+        className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8"
+      >
         {SERVICE_GROUPS.map((group, index) => (
           <div key={group.key} className="relative">
             {/* The oversized numeral, sitting behind the content. */}

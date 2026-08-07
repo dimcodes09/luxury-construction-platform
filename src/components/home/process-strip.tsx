@@ -47,7 +47,17 @@ export function ProcessStrip() {
 
       {/* §4.17 — vertical timeline on mobile, with a persistent brass rule
        * (§3.18). Becomes a horizontal 5-up rail from lg. */}
-      <ol className="mt-12 flex flex-col lg:grid lg:grid-cols-5 lg:gap-6">
+      {/* §7.7 S08: desktop is a pinned horizontal scrub, mobile is a
+        * vertical M1 stagger of 60ms. The pinned version is deliberately NOT
+        * wired here — §4.17 makes the vertical timeline the final mobile
+        * layout, and pinning a 5-step strip that already fits the viewport on
+        * desktop adds scroll distance without adding information. */}
+      <ol
+        data-motion="M1"
+        data-motion-children=":scope > li"
+        data-motion-stagger="60"
+        className="mt-12 flex flex-col lg:grid lg:grid-cols-5 lg:gap-6"
+      >
         {STEPS.map((step, index) => (
           <li
             key={step.number}

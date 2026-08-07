@@ -16,7 +16,13 @@ import { Display, Body, Heading } from "@/components/foundation/typography";
 export function ProblemStatement() {
   return (
     <Section rhythm="feature" container="narrow" className="bg-basalt-050 dark:bg-basalt-950">
-      <div className="mx-auto max-w-prose text-center">
+      {/* §7.7 S02: M1, SINGLE BLOCK, NO STAGGER, top 80%. Staggering here
+        * would serialise a paragraph that has to land as one thought. */}
+      <div
+        data-motion="M1"
+        data-motion-start="top 80%"
+        className="mx-auto max-w-prose text-center"
+      >
         <Display as="h2" size="lg" className="mx-auto text-balance">
           Most people building a home are quietly terrified.
         </Display>

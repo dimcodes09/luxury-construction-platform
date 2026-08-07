@@ -16,9 +16,25 @@ export const projectTypeSchema = z.enum([
   "interiors",
   "commercial",
   "single-service",
+  "house-construction",
+  "turnkey-home-solutions",
+  "home-renovation",
+  "interior-design",
+  "modular-kitchen",
+  "waterproofing",
+  "painting",
+  "electrical-work",
+  "false-ceiling",
 ]);
 
-export const tierSchema = z.enum(["Essential", "Signature", "Bespoke"]);
+export const tierSchema = z.enum([
+  "Essential",
+  "Signature",
+  "Bespoke",
+  "essential",
+  "signature",
+  "bespoke",
+]);
 
 export const budgetBandSchema = z.enum([
   "under-25L",

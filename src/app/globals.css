@@ -371,6 +371,23 @@
 @utility pb-safe {
   padding-bottom: env(safe-area-inset-bottom);
 }
+
+/* §4.17 — "Sticky CTA bar occupies the bottom 64px after 40% scroll. EVERY
+ * MOBILE LAYOUT MUST RESERVE THAT SPACE — padding-bottom: calc(64px +
+ * env(safe-area-inset-bottom)) on the page wrapper. Content hidden behind the
+ * CTA bar is THE MOST COMMON MOBILE BUG IN THIS PATTERN."
+ *
+ * Applied once on <main> in SiteShell rather than per page, and dropped at lg
+ * where the bar is replaced by the desktop contact dock (§9.2). */
+@utility pb-sticky-cta {
+  padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 64rem) {
+  .pb-sticky-cta {
+    padding-bottom: 0;
+  }
+}
 @utility inset-safe-bottom {
   bottom: env(safe-area-inset-bottom);
 }

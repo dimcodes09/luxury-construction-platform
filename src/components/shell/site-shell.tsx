@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Header } from "./header";
 import { StickyCtaBar } from "./sticky-cta-bar";
 import { ContactDock } from "./contact-dock";
+import { MotionProvider } from "@/components/motion/motion-provider";
 
 /* design.md §3.0 SHELL — assembles §3.5 header, §3.6 sticky CTA bar,
  * §3.7 contact dock and §3.8 footer into one wrapper.
@@ -50,7 +51,11 @@ export function SiteShell({
         featuredProject={featuredProject}
       />
 
-      <main id="main" className="min-h-svh">
+      {/* §4.17 — reserve the 64px the sticky CTA bar occupies, plus the iOS
+       * home-indicator inset. Without it the last element of every page sits
+       * under the bar, which §4.17 calls the most common mobile bug in this
+       * pattern. Dropped at lg, where the dock replaces the bar. */}
+      <main id="main" className="min-h-svh pb-sticky-cta">
         {children}
       </main>
 
@@ -65,7 +70,15 @@ export function SiteShell({
             <Button asChild variant="primary" size="lg">
               <a href="/contact">Book a site visit</a>
             </Button>
-            <Button asChild variant="whatsapp" size="lg">
+            {/* §3.1 — the whatsapp variant is reserved for the WhatsApp
+              * channel. This is a tel: link, so it takes the secondary
+              * treatment; brand green on a phone link reads as a mislabel. */}
+            <Button
+              asChild
+              variant="secondary"
+              size="lg"
+              className="border-basalt-050 text-basalt-050"
+            >
               <a href={`tel:${phoneE164}`}>Talk to a designer</a>
             </Button>
           </>
@@ -102,6 +115,11 @@ export function SiteShell({
           { label: "Terms", href: "/terms" },
         ]}
       />
+
+      {/* §7.7 implementation note — ONE provider reads the DOM and wires every
+       * ScrollTrigger. GSAP and Lenis are dynamically imported inside it, so
+       * neither reaches the shared bundle (NFR-PERF-04). */}
+      <MotionProvider />
 
       <StickyCtaBar phoneE164={phoneE164} context={whatsappContext} />
       <ContactDock

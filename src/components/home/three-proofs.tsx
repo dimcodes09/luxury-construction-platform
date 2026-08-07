@@ -51,7 +51,13 @@ export function ThreeProofs() {
         title="Three things you can check before you call."
       />
 
-      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+      {/* §7.7 S03 "Three proofs": M1, stagger 60ms, top 85%. */}
+      <div
+        data-motion="M1"
+        data-motion-children=":scope > *"
+        data-motion-stagger="60"
+        className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3"
+      >
         {PROOFS.map((proof) => (
           <Card
             key={proof.title}

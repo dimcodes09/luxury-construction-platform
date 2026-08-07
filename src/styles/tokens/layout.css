@@ -106,8 +106,18 @@
 @utility measure-prose {
   max-width: 72ch;
 }
+/* §2.2.3 — "display headings ≤16ch on desktop, ≤20ch mobile."
+ * Two values, not one: 20ch at 375px is roughly three lines of display-xl,
+ * which is what §4.17's home wireframe draws. Holding 20ch on a 1440px screen
+ * would make the same headline four words wide and absurd. */
 @utility measure-display {
   max-width: 20ch;
+}
+
+@media (min-width: 64rem) {
+  .measure-display {
+    max-width: 16ch;
+  }
 }
 
 /* §2.2.3 optical alignment for display headings that begin with a quote,

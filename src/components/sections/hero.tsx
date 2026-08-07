@@ -59,8 +59,15 @@ export function Hero({
         className,
       )}
     >
-      {/* The LCP element. `priority` preloads it; nothing above it competes. */}
-      <div className="absolute inset-0 -z-10">
+      {/* The LCP element. `priority` preloads it; nothing above it competes.
+       * §7.7 S01 "Hero media": M3 at -6%, reduced from the §7.2 cap of 8%
+       * because the headline sits over it and more movement makes the type
+       * hard to read as it passes. */}
+      <div
+        data-motion="M3"
+        data-motion-parallax="6"
+        className="absolute inset-0 -z-10"
+      >
         <Image
           src={poster.src}
           alt={poster.alt}
@@ -96,15 +103,27 @@ export function Hero({
           {headline}
         </Display>
 
-        <Body size="lg" className="mt-6 text-basalt-300">
-          {subtitle}
-        </Body>
+        {/* §7.7 S01 "Hero sub + CTAs": M1, stagger 80ms, delay 400ms, on load.
+         * The headline above is deliberately excluded — §7.1 rule 5 forbids
+         * animating opacity from 0 on content required for the initial render,
+         * and it is the LCP text. */}
+        <div
+          data-motion="M1"
+          data-motion-onload=""
+          data-motion-children=":scope > *"
+          data-motion-stagger="80"
+          data-motion-delay="400"
+        >
+          <Body size="lg" className="mt-6 text-basalt-300">
+            {subtitle}
+          </Body>
 
-        {actions ? (
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            {actions}
-          </div>
-        ) : null}
+          {actions ? (
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              {actions}
+            </div>
+          ) : null}
+        </div>
       </div>
     </section>
   );

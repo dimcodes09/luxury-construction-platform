@@ -123,7 +123,17 @@ export default async function WorkPage({
         ) : (
           <>
             {/* §4.3 — 3-up desktop, 2-up tablet, 1-up mobile (§4.17). */}
-            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* §7.7 portfolio "Card grid, initial": M1 batch, stagger 60ms,
+             * once. The Flip-on-filter entry is not wired: filtering is a full
+             * server round-trip here (FR-PORT-02), so there is no shared DOM
+             * for Flip.from() to interpolate between. */}
+            <div
+              data-motion="M1"
+              data-motion-batch=""
+              data-motion-children=":scope > article"
+              data-motion-stagger="60"
+              className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+            >
               {projects.map((project, index) => (
                 <ProjectCard
                   key={project.slug}

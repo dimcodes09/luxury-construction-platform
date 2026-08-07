@@ -233,11 +233,22 @@ function interior({
 
       const inWindow = u > winX0 && u < winX1 && v > winY0 && v < winY1;
       if (inWindow) {
-        // Blown-out daylight, with a faint mullion.
-        const mullion =
-          Math.abs(u - (winX0 + winX1) / 2) < 0.006 ||
-          Math.abs(v - (winY0 + winY1) / 2) < 0.008;
-        rgb = mullion ? mix(C.basalt400, wall, 0.4) : mix(C.basalt000, [255, 255, 255], 0.55);
+        /* Daylight, not a flat white rectangle. Three things stop it reading
+         * as a broken placeholder: the glow falls off toward the reveal, the
+         * mullion is soft rather than a hard 1px cross, and a faint warm
+         * gradient runs down the pane the way real sky does. */
+        const inset = Math.min(
+          Math.min(u - winX0, winX1 - u) / (winX1 - winX0),
+          Math.min(v - winY0, winY1 - v) / (winY1 - winY0),
+        );
+        const falloff = Math.min(1, inset * 6);
+        const sky = mix([255, 255, 255], C.brass100, (v - winY0) / (winY1 - winY0) * 0.5);
+        rgb = mix(wall, sky, 0.35 + falloff * 0.62);
+
+        const mullionX = Math.abs(u - (winX0 + winX1) / 2);
+        const mullionY = Math.abs(v - (winY0 + winY1) / 2);
+        const mullion = Math.exp(-mullionX * 380) + Math.exp(-mullionY * 300);
+        rgb = mix(rgb, C.basalt700, Math.min(mullion, 1) * 0.55);
       } else {
         // Light falls off with distance from the window centre.
         const cx = (winX0 + winX1) / 2;
@@ -460,7 +471,7 @@ mkdirSync(OUT_DIR, { recursive: true });
 
 const jobs = [
   // Hero: a dark interior, so the §1.5 wordmark scrim has something to sit on.
-  ["hero.png", 720, 450, interior({ seed: 11, wall: C.basalt700, floor: C.basalt800, accent: C.kota600, windowSide: "right", brightness: 0.92 })],
+  ["hero.png", 1440, 900, interior({ seed: 11, wall: C.basalt700, floor: C.basalt800, accent: C.kota600, windowSide: "right", brightness: 0.86, warmth: 1.04 })],
 
   ["project-1.png", 520, 325, interior({ seed: 21, wall: C.basalt100, floor: C.teak, accent: C.kota600 })],
   ["project-2.png", 520, 325, interior({ seed: 22, wall: C.basalt200, floor: C.basalt600, accent: C.brass500, windowSide: "right" })],

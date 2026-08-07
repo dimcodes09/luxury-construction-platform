@@ -17,6 +17,7 @@ import { SelectedWork } from "@/components/home/selected-work";
 import { ServicesAsIntents } from "@/components/home/services-intents";
 import { MiniEstimator } from "@/components/home/mini-estimator";
 import { ProcessStrip } from "@/components/home/process-strip";
+import { ShowcaseFrame } from "@/components/home/showcase-frame";
 import {
   getFeaturedProjects,
   getFeaturedTestimonials,
@@ -137,6 +138,14 @@ export default async function HomePage() {
 
       {/* ── S04 · Selected work ──────────────────────────────────────── */}
       <SelectedWork projects={projects} totalCount={totalCount} />
+
+      {/* The scroll showcase — a scrubbed frame that settles as it arrives.
+       * Sits between the work grid and the before/after so the page has one
+       * moment of held attention before the interactive comparison. */}
+      <ShowcaseFrame
+        image={{ src: "/dev/after.png", alt: "A finished kitchen in Baner" }}
+        caption="Kitchen re-planned, 128 sq ft · ₹4.6 L · 5 weeks"
+      />
 
       {/* ── S05 · Before / after ─────────────────────────────────────────
        * §4.1: single full-width BeforeAfter on a DARK surface "so the images

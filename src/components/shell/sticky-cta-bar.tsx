@@ -43,25 +43,33 @@ export function StickyCtaBar({
   useEffect(() => {
     if (suppressed) return;
 
+    /* Polled from rAF rather than a scroll listener, for the same reason as the
+     * header: Lenis (§7.5) owns scrolling on desktop and the native scroll
+     * event does not reliably fire while it does. A listener-based bar simply
+     * never appears. Early-outs when the position has not changed. */
     let frame: number | undefined;
-    const onScroll = () => {
-      if (frame !== undefined) return;
-      frame = requestAnimationFrame(() => {
-        frame = undefined;
+    let running = true;
+    let last = -1;
+
+    const tick = () => {
+      if (!running) return;
+      const y = window.scrollY;
+      if (y !== last) {
+        last = y;
         const scrollable =
           document.documentElement.scrollHeight - window.innerHeight;
         // Guard against a short page where scrollable is 0 — dividing by it
         // yields Infinity and the bar would appear immediately.
-        const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+        const progress = scrollable > 0 ? y / scrollable : 0;
         setVisible(progress > 0.4);
-      });
+      }
+      frame = requestAnimationFrame(tick);
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    frame = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      running = false;
       if (frame !== undefined) cancelAnimationFrame(frame);
     };
   }, [suppressed, pathname]);
