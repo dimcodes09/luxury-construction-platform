@@ -1,0 +1,46 @@
+/* design.md §2.7 — Z-index scale
+ *
+ * Values are deliberately sparse so a new layer can be inserted between two
+ * existing ones without a renumber. Components use the named utilities below;
+ * a raw `z-50` in a component is a bug, because it says nothing about intent.
+ */
+
+:root {
+  --z-base: 0;
+  --z-raised: 10; /* sticky section headers    */
+  --z-sticky-cta: 30; /* mobile bottom CTA bar     */
+  --z-header: 40;
+  --z-dock: 50; /* WhatsApp / contact dock   */
+  --z-drawer: 60; /* mobile nav, filter drawer */
+  --z-modal: 70;
+  --z-toast: 80;
+  --z-devtools: 90;
+}
+
+@utility z-base {
+  z-index: var(--z-base);
+}
+@utility z-raised {
+  z-index: var(--z-raised);
+}
+@utility z-sticky-cta {
+  z-index: var(--z-sticky-cta);
+}
+@utility z-header {
+  z-index: var(--z-header);
+}
+@utility z-dock {
+  z-index: var(--z-dock);
+}
+@utility z-drawer {
+  z-index: var(--z-drawer);
+}
+@utility z-modal {
+  z-index: var(--z-modal);
+}
+@utility z-toast {
+  z-index: var(--z-toast);
+}
+@utility z-devtools {
+  z-index: var(--z-devtools);
+}

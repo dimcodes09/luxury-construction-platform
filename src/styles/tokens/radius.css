@@ -1,0 +1,22 @@
+/* design.md §2.5 — Radius
+ *
+ * Philosophy: near-square. Architecture is orthogonal; large radii read as
+ * consumer-app friendly, not built. `radius-full` is restricted to avatars,
+ * pills and the WhatsApp dock — nothing else.
+ *
+ * These deliberately OVERRIDE Tailwind's defaults (which are far rounder), so
+ * an unthinking `rounded-lg` still lands inside the system rather than outside
+ * it. --radius-* is a Tailwind namespace, hence @theme rather than :root.
+ */
+
+@theme {
+  --radius-none: 0; /* default for most surfaces     */
+  --radius-sm: 0.125rem; /* 2px — inputs, chips, controls */
+  --radius-md: 0.25rem; /* 4px — cards, images           */
+  --radius-lg: 0.5rem; /* 8px — modals, sheets          */
+  --radius-xl: 0.5rem; /* clamped: nothing exceeds 8px  */
+  --radius-2xl: 0.5rem;
+  --radius-3xl: 0.5rem;
+  --radius-4xl: 0.5rem;
+  --radius-full: 9999px; /* avatars, pills, icon buttons  */
+}

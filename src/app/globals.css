@@ -1,0 +1,451 @@
+@import "tailwindcss";
+
+/* design.md §2.9 — token file structure. Tailwind's theme is generated FROM
+ * these files, so `class="text-brass-500"` and `var(--brass-500)` resolve to a
+ * single source of truth. Order matters: colour first, everything else builds
+ * on its variables. */
+@import "../styles/tokens/color.css";
+@import "../styles/tokens/typography.css";
+@import "../styles/tokens/space.css";
+@import "../styles/tokens/layout.css";
+@import "../styles/tokens/radius.css";
+@import "../styles/tokens/shadow.css";
+@import "../styles/tokens/motion.css";
+@import "../styles/tokens/z-index.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* §3.22 — "All hover styles are wrapped in @media (hover: hover) and
+ * (pointer: fine). Applying hover on touch causes sticky states — a common and
+ * very visible bug." Overriding the variant itself means every `hover:` in the
+ * codebase gets this for free and no component can forget it. */
+@custom-variant hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Colour → Tailwind theme (§2.1)
+ *
+ * `inline` so the utility emits var(--brass-500) directly rather than a copy.
+ * That is what lets .dark flip the semantic aliases at runtime with no
+ * duplicated utility classes.
+ * ────────────────────────────────────────────────────────────────────────── */
+@theme inline {
+  /* Ramps — for when a component genuinely needs a specific step. */
+  --color-basalt-950: var(--basalt-950);
+  --color-basalt-900: var(--basalt-900);
+  --color-basalt-800: var(--basalt-800);
+  --color-basalt-700: var(--basalt-700);
+  --color-basalt-600: var(--basalt-600);
+  --color-basalt-500: var(--basalt-500);
+  --color-basalt-400: var(--basalt-400);
+  --color-basalt-300: var(--basalt-300);
+  --color-basalt-200: var(--basalt-200);
+  --color-basalt-100: var(--basalt-100);
+  --color-basalt-050: var(--basalt-050);
+  --color-basalt-000: var(--basalt-000);
+
+  --color-ink-900: var(--ink-900);
+  --color-ink-700: var(--ink-700);
+  --color-ink-500: var(--ink-500);
+  --color-ink-300: var(--ink-300);
+
+  --color-brass-700: var(--brass-700);
+  --color-brass-600: var(--brass-600);
+  --color-brass-500: var(--brass-500);
+  --color-brass-400: var(--brass-400);
+  --color-brass-300: var(--brass-300);
+  --color-brass-100: var(--brass-100);
+
+  --color-kota-800: var(--kota-800);
+  --color-kota-600: var(--kota-600);
+  --color-kota-400: var(--kota-400);
+  --color-kota-200: var(--kota-200);
+
+  --color-blueprint-700: var(--blueprint-700);
+  --color-blueprint-500: var(--blueprint-500);
+  --color-blueprint-300: var(--blueprint-300);
+  --color-blueprint-100: var(--blueprint-100);
+
+  --color-success-600: var(--success-600);
+  --color-success-100: var(--success-100);
+  --color-warning-600: var(--warning-600);
+  --color-warning-100: var(--warning-100);
+  --color-danger-600: var(--danger-600);
+  --color-danger-100: var(--danger-100);
+  --color-info-600: var(--info-600);
+  --color-info-100: var(--info-100);
+
+  /* §2.1.3 semantic aliases — what components should actually reach for. */
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-raised: var(--bg-raised);
+  --color-inverse: var(--bg-inverse);
+  --color-technical: var(--bg-technical);
+
+  --color-fg: var(--text-primary);
+  --color-fg-secondary: var(--text-secondary);
+  --color-fg-muted: var(--text-muted);
+  --color-fg-accent: var(--text-accent);
+  --color-fg-inverse: var(--text-inverse);
+
+  --color-hairline: var(--border-hairline);
+  --color-strong: var(--border-strong);
+  --color-accent: var(--border-accent);
+  --color-focus: var(--focus-ring);
+  --color-scrim: var(--overlay-scrim);
+
+  /* §2.4.3 — the 1-column bleed needs to pull content back out past the
+   * container gutter. `inline` so it tracks the media-query-driven --gutter
+   * rather than freezing at the mobile value. */
+  --spacing-gutter: var(--gutter);
+
+  --color-whatsapp: var(--whatsapp-500);
+
+  --color-skeleton: var(--skeleton-base);
+
+  /* §3.20 skeleton shimmer — a 12% white gradient sweeping left→right. */
+  --animate-shimmer: shimmer var(--dur-shimmer) linear infinite;
+
+  /* §3.19 — accordion content expands with a height transition over --dur-base.
+   * Radix measures the panel and exposes it as --radix-accordion-content-height,
+   * so this animates to a real height without JS measuring per frame. */
+  --animate-accordion-down: accordion-down var(--dur-base) var(--ease-standard);
+  --animate-accordion-up: accordion-up var(--dur-base) var(--ease-standard);
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* Overlay and panel entrances. §2.6: no elastic, no overshoot — panels use
+ * --dur-slow and settle on the house curve. */
+@theme {
+  --animate-fade-in: fade-in var(--dur-base) var(--ease-out);
+  --animate-fade-out: fade-out var(--dur-fast) var(--ease-in);
+  --animate-slide-in-right: slide-in-right var(--dur-slow) var(--ease-standard);
+  --animate-slide-out-right: slide-out-right var(--dur-base) var(--ease-in);
+  --animate-slide-in-bottom: slide-in-bottom var(--dur-slow) var(--ease-standard);
+  --animate-slide-out-bottom: slide-out-bottom var(--dur-base) var(--ease-in);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes slide-in-bottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes slide-out-bottom {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+/* shadcn/ui compatibility. Anything added later with `npx shadcn add` reads
+ * these names; mapping them onto our tokens means generated components land
+ * inside the design system instead of importing a second, greyer one. */
+@theme inline {
+  --color-background: var(--bg-canvas);
+  --color-foreground: var(--text-primary);
+  --color-card: var(--bg-raised);
+  --color-card-foreground: var(--text-primary);
+  --color-popover: var(--bg-raised);
+  --color-popover-foreground: var(--text-primary);
+  --color-primary: var(--ink-900);
+  --color-primary-foreground: var(--basalt-050);
+  --color-secondary: var(--basalt-100);
+  --color-secondary-foreground: var(--ink-900);
+  --color-muted: var(--basalt-100);
+  --color-muted-foreground: var(--text-muted);
+  --color-accent-foreground: var(--ink-900);
+  --color-destructive: var(--danger-600);
+  --color-border: var(--border-hairline);
+  --color-input: var(--border-hairline);
+  --color-ring: var(--focus-ring);
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+
+    /* §9.3 — removes the 300ms tap delay without disabling pinch zoom. */
+    touch-action: manipulation;
+
+    /* Lenis owns smooth scrolling on desktop (§7.5); native smooth scroll here
+     * would fight it. Anchor jumps stay instant and correct. */
+    scroll-behavior: auto;
+  }
+
+  body {
+    font-size: var(--text-body-md);
+    line-height: var(--text-body-md--line-height);
+  }
+
+  /* §2.2.3 — display headings are set in the serif and never inherit the
+   * grotesk. Weight and tracking come from the type token. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  /* §2.2.3 — tabular figures on every price, date, dimension and stat.
+   * "Proportional figures in a stat band look amateur." */
+  :where(output, time, [data-numeric]) {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* §9.4 — visible on EVERY interactive element. Never removed without a
+   * replacement, and offset so it never crowds the control it marks. */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+
+  /* Only suppress the ring for genuine mouse clicks, never for keyboard. */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  ::selection {
+    background-color: var(--brass-100);
+    color: var(--ink-900);
+  }
+
+  .dark ::selection {
+    background-color: var(--brass-700);
+    color: var(--basalt-050);
+  }
+
+  /* §9.3 — ≥16px on form controls, otherwise iOS zooms the viewport on focus
+   * and the user has to pinch back out. A silent, very common mobile bug. */
+  input,
+  textarea,
+  select {
+    font-size: max(1rem, var(--text-body-md));
+  }
+
+  /* Images never exceed their box, and never contribute layout shift. */
+  img,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* §2.5 — the system is hairline-first. On ≥2dppx screens a 1px border is
+ * visibly chunky, so we render it at 0.5px for genuine optical fineness. */
+@utility hairline {
+  border: 1px solid var(--border-hairline);
+}
+
+@media (min-resolution: 2dppx) {
+  .hairline {
+    border-width: 0.5px;
+  }
+}
+
+/* §3.19 — FAQItem uses native <details>/<summary> so answers are in the DOM
+ * for SEO and Ctrl+F. Every engine draws its own disclosure triangle; this
+ * removes all of them without losing the semantics. */
+@utility no-marker {
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* §2.4.4 — the dev-only baseline overlay behind Ctrl+G. An 8px rhythm;
+ * display type is exempt because optical placement beats mathematical. */
+@utility baseline-overlay {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--blueprint-500) 0,
+    var(--blueprint-500) 1px,
+    transparent 1px,
+    transparent var(--baseline)
+  );
+  opacity: 0.12;
+}
+
+/* §9.2 hero heights: 100svh mobile, 90svh tablet, 100svh desktop.
+ * svh throughout — `vh` is measured against the largest viewport and is simply
+ * wrong on mobile the moment the address bar collapses. */
+@utility h-hero {
+  min-height: 100svh;
+}
+@utility h-hero-md {
+  min-height: 90svh;
+}
+
+/* Modal and sheet ceilings. svh rather than vh so a mobile browser's
+ * collapsing address bar cannot push the panel off-screen. */
+@utility max-h-modal {
+  max-height: 90svh;
+}
+@utility max-h-sheet {
+  max-height: 85svh;
+}
+
+/* §9.3 — "Respect env(safe-area-inset-*) on all fixed elements."
+ * Without this the sticky CTA bar sits under the iOS home indicator. */
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@utility inset-safe-bottom {
+  bottom: env(safe-area-inset-bottom);
+}
+
+/* §3.5 — the header collapses 84px → 64px on scroll, and §3.7's dock expands
+ * from a 56px circle to a 280px pill. Both animate a size property rather than
+ * a transform, which §7.3 normally forbids — but each is a single fixed-position
+ * element outside the document flow, so it cannot reflow anything else, and a
+ * transform cannot reflow the content that has to move with it. Named utilities
+ * so the property list is reviewed once, not inlined per component. */
+@utility transition-height {
+  transition-property: height;
+  transition-timing-function: var(--ease-standard);
+  transition-duration: var(--dur-base);
+}
+
+@utility transition-dock {
+  transition-property: width, padding;
+  transition-timing-function: var(--ease-standard);
+  transition-duration: var(--dur-base);
+}
+
+/* §3.3 — checkbox, radio, switch and slider thumb carry a 1.5px border.
+ * Tailwind's border-width scale is integer-only, so this is a named utility
+ * rather than an arbitrary value. */
+@utility border-control {
+  border-width: 1.5px;
+}
+
+/* §1.5 — the datum line: a 1px rule with a tick and a monospace label,
+ * borrowed from architectural drawings. The connective tissue of the identity;
+ * it appears on every page. */
+@utility datum-rule {
+  height: 1px;
+  background-color: var(--border-hairline);
+}
+
+/* §2.2.3 — `tnum` wherever numbers must align in a column. */
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* §3.2 / §3.22 — the animated underline, shared by inline links and nav items.
+ * A background-image gradient rather than text-decoration, because only
+ * background-size animates cleanly and can be positioned off the baseline.
+ * It sits at 88% of the line box so it clears descenders. */
+@utility underline-wipe {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  background-position: 0 88%;
+  transition: background-size var(--dur-base) var(--ease-standard);
+}
+
+/* §3.22 — hover is pointer-only, always. */
+@media (hover: hover) and (pointer: fine) {
+  .underline-wipe:hover,
+  .underline-wipe:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* §3.10 — ProjectCard hover draws a brass hairline left→right beneath the
+ * datum line. Same mechanic as the underline wipe, brass rather than
+ * currentColor, and pinned to the bottom edge of its box. */
+@utility rule-wipe {
+  background-image: linear-gradient(var(--brass-500), var(--brass-500));
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  transition: background-size var(--dur-base) var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .rule-wipe {
+    background-size: 100% 1px;
+  }
+}

@@ -1,0 +1,119 @@
+/* design.md §2.1 — Colour
+ *
+ * Ramps are raw values and live ONLY in this file. Components never touch them
+ * directly; they consume the semantic aliases at the bottom (§2.1.3), which is
+ * what makes dark mode a single-file change.
+ *
+ * §2.1.1: every neutral carries a yellow/red bias. Pure #000 reads digital and
+ * cold, pure #fff reads clinical. Brass is capped at 5% of any viewport (§2.1.5)
+ * — scarcity is what makes a metallic read precious rather than gaudy.
+ */
+
+:root {
+  /* NEUTRAL — warm */
+  --basalt-950: #0b0b09; /* deepest bg, dark mode canvas         */
+  --basalt-900: #0e0e0c; /* primary dark surface                 */
+  --basalt-800: #161613; /* raised dark surface / cards          */
+  --basalt-700: #21211d; /* dark borders, hairlines              */
+  --basalt-600: #3a3a34; /* disabled text on dark                */
+  --basalt-500: #5c5c53; /* muted text on dark                   */
+  --basalt-400: #8a8a7e; /* secondary text on dark               */
+  --basalt-300: #b5b5a8; /* tertiary                             */
+  --basalt-200: #d9d6cc; /* light borders                        */
+  --basalt-100: #eae7de; /* light raised surface                 */
+  --basalt-050: #f5f2ed; /* LIME WASH — primary light surface    */
+  --basalt-000: #fbfaf7; /* highest light surface / input fields */
+
+  /* INK — text on light */
+  --ink-900: #14140f; /* headings              */
+  --ink-700: #33332b; /* body                  */
+  --ink-500: #63635a; /* secondary / captions  */
+  --ink-300: #97978c; /* placeholder / disabled */
+
+  /* BRASS — the accent. Use sparingly (≤5% of viewport). */
+  --brass-700: #7d6229; /* pressed state, text on light           */
+  --brass-600: #96762f; /* accessible accent text on light (AA)   */
+  --brass-500: #b08d3f; /* BASE — rules, ticks, icon accents      */
+  --brass-400: #c7a65c; /* hover on dark                          */
+  --brass-300: #dcc48f; /* accent text on dark (AA on basalt-900) */
+  --brass-100: #f0e6ce; /* tint fills                             */
+
+  /* KOTA — secondary surface */
+  --kota-800: #2a322e;
+  --kota-600: #3a423e;
+  --kota-400: #64706a;
+  --kota-200: #c3cbc6;
+
+  /* BLUEPRINT — technical layer only.
+   * §2.1.1: a semantic signal. When the user sees Blueprint they are looking at
+   * engineering truth, not marketing. Never leak this into editorial sections. */
+  --blueprint-700: #1e3550;
+  --blueprint-500: #2b4b6f;
+  --blueprint-300: #7c9bba;
+  --blueprint-100: #dce6ef;
+
+  /* THIRD-PARTY BRAND — locked values we do not own and must not restyle.
+   * They live here so component code never carries a raw hex (§2 hard rule). */
+  --whatsapp-500: #128c7e; /* §3.1 whatsapp button, §3.7 contact dock */
+
+  /* SEMANTIC */
+  --success-600: #3e7a56;
+  --success-100: #e1f0e7;
+  --warning-600: #b4741f;
+  --warning-100: #fbeeda;
+  --danger-600: #a63a2e;
+  --danger-100: #f8e3e0;
+  --info-600: #2b4b6f;
+  --info-100: #dce6ef;
+}
+
+/* §2.1.3 — Semantic aliases. These are what components actually consume. */
+
+:root {
+  --bg-canvas: var(--basalt-050);
+  --bg-surface: var(--basalt-000);
+  --bg-raised: #ffffff;
+  --bg-inverse: var(--basalt-900);
+  --bg-technical: var(--blueprint-100);
+
+  --text-primary: var(--ink-900);
+  --text-secondary: var(--ink-700);
+  --text-muted: var(--ink-500);
+  --text-accent: var(--brass-600);
+  --text-inverse: var(--basalt-050);
+
+  --border-hairline: var(--basalt-200);
+  --border-strong: var(--ink-900);
+  --border-accent: var(--brass-500);
+
+  --focus-ring: var(--brass-600);
+  --overlay-scrim: rgb(11 11 9 / 0.62);
+
+  /* Shimmer for skeletons (§3.20) — 12% white sweep. */
+  --skeleton-base: var(--basalt-100);
+  --skeleton-sheen: rgb(255 255 255 / 0.12);
+}
+
+.dark {
+  --bg-canvas: var(--basalt-950);
+  --bg-surface: var(--basalt-900);
+  --bg-raised: var(--basalt-800);
+  --bg-inverse: var(--basalt-050);
+  --bg-technical: var(--blueprint-700);
+
+  --text-primary: var(--basalt-050);
+  --text-secondary: var(--basalt-300);
+  --text-muted: var(--basalt-400);
+  --text-accent: var(--brass-300);
+  --text-inverse: var(--ink-900);
+
+  --border-hairline: var(--basalt-700);
+  --border-strong: var(--basalt-050);
+  --border-accent: var(--brass-500);
+
+  --focus-ring: var(--brass-400);
+  --overlay-scrim: rgb(11 11 9 / 0.76);
+
+  --skeleton-base: var(--basalt-800);
+  --skeleton-sheen: rgb(255 255 255 / 0.12);
+}

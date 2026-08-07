@@ -1,0 +1,12 @@
+/* design.md §2.5 — Elevation
+ *
+ * We largely reject drop shadows: architecture has no drop shadows, and
+ * shadow-heavy UI reads as 2016 Material. Separation comes from borders,
+ * background steps and space. Exactly three shadows exist — do not add a fourth.
+ */
+
+@theme {
+  --shadow-sheet: 0 1px 2px rgb(11 11 9 / 0.04), 0 8px 24px rgb(11 11 9 / 0.06);
+  --shadow-modal: 0 2px 8px rgb(11 11 9 / 0.08), 0 32px 64px rgb(11 11 9 / 0.14);
+  --shadow-lift: 0 1px 1px rgb(11 11 9 / 0.03), 0 12px 32px rgb(11 11 9 / 0.1);
+}

@@ -1,0 +1,117 @@
+/* design.md §2.4 — Grid & layout
+ *
+ * Breakpoints are §9.1 and they DIFFER from Tailwind's defaults: `sm` is 480px
+ * here, not 640px. Overriding them means `sm:` in a component says what
+ * design.md says it says, rather than quietly meaning something else.
+ *
+ * design-process.md §1.2: only three of these are real design decisions —
+ * 375 (base, single column), 768 (1-up→2-up), 1024 (nav, 3D, Lenis unlock).
+ * 1280 and above are polish. Add a breakpoint when the CONTENT breaks, never
+ * because a device exists.
+ */
+
+@theme {
+  --breakpoint-sm: 30rem; /* 480px  — large phones                    */
+  --breakpoint-md: 48rem; /* 768px  — tablets, small laptops          */
+  --breakpoint-lg: 64rem; /* 1024px — 3D and pinned scroll unlock     */
+  --breakpoint-xl: 80rem; /* 1280px — sticky rails unlock             */
+  --breakpoint-2xl: 96rem; /* 1536px — large desktop                   */
+  --breakpoint-3xl: 120rem; /* 1920px — beyond this margins grow, not content */
+
+  /* §2.4.1 containers */
+  --container-wide: 100rem; /* 1600px — portfolio grids, gallery  */
+  --container-base: 85rem; /* 1360px — DEFAULT page container    */
+  --container-narrow: 65rem; /* 1040px — forms, process, estimator */
+  --container-prose: 45rem; /* 720px  — blog body, legal          */
+}
+
+:root {
+  /* §2.4.1 horizontal gutters: 20 → 32 → 48 → 64.
+   * Media-query driven, so these stay in :root rather than @theme. */
+  --gutter: var(--space-5);
+
+  /* §2.4.2 column grid */
+  --grid-columns: 4;
+  --grid-gutter: var(--space-4);
+
+  /* §2.4.4 — an 8px baseline grid governs vertical rhythm.
+   * Display type is exempt: optical placement wins over mathematical. */
+  --baseline: 0.5rem;
+
+  /* §3.5 header heights: 84px at top, collapsing to 64px on scroll. */
+  --header-height: 4rem;
+  --header-height-lg: 5.25rem;
+
+  /* §3.6 sticky mobile CTA bar */
+  --sticky-cta-height: 4rem;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --gutter: var(--space-8);
+    --grid-columns: 8;
+    --grid-gutter: var(--space-6);
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --gutter: var(--space-12);
+    --grid-columns: 12;
+  }
+}
+
+@media (min-width: 90rem) {
+  :root {
+    --gutter: var(--space-16);
+    --grid-gutter: var(--space-8);
+  }
+}
+
+/* Container utilities. §2.4.1 gutters are baked in so a page never has to
+ * remember them, and `container-base` is the default for page content. */
+@utility container-full {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+@utility container-wide {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+@utility container-base {
+  width: 100%;
+  max-width: var(--container-base);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+@utility container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+@utility container-prose {
+  width: 100%;
+  max-width: var(--container-prose);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* §2.2.3 measure — body text never runs full-bleed. */
+@utility measure-body {
+  max-width: 68ch;
+}
+@utility measure-prose {
+  max-width: 72ch;
+}
+@utility measure-display {
+  max-width: 20ch;
+}
+
+/* §2.2.3 optical alignment for display headings that begin with a quote,
+ * A, V, W, T, Y or J. */
+@utility optical {
+  margin-left: var(--optical-inset);
+}

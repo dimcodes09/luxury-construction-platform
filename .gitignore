@@ -1,0 +1,83 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# ── dependencies ────────────────────────────────────────────────────────────
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# ── build output ────────────────────────────────────────────────────────────
+/.next/
+/out/
+/build
+/dist
+
+# ── testing ─────────────────────────────────────────────────────────────────
+/coverage
+/playwright-report
+/test-results
+/.nyc_output
+
+# ── env files ───────────────────────────────────────────────────────────────
+# NFR-SEC-07: all secrets live in env vars and none of them belong in git.
+.env
+.env.*
+.env*.local
+
+# ...but .env.example MUST be committed. implementationplan.md Phase 0 lists it
+# as a deliverable: ".env.example with every required variable documented."
+# The bare `.env*` pattern above would otherwise swallow it, and a repo with no
+# variable inventory is one nobody else can run.
+!.env.example
+
+# ── generated dev assets ────────────────────────────────────────────────────
+# 4.2MB of procedurally generated PNGs for the /dev/components gallery.
+# Deterministic and regenerable in about a second:
+#     npm run placeholders
+# Binary blobs in git history are permanent, and these are dev-only fixtures
+# that Phase 2 replaces with real project photography anyway.
+/public/dev/
+
+# ── editor & tooling ────────────────────────────────────────────────────────
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Claude Code: share the dev-server config, keep local permissions out.
+.claude/settings.local.json
+.claude/*.local.json
+
+# ── OS cruft ────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ── logs & debug ────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ── secrets & certificates ──────────────────────────────────────────────────
+*.pem
+*.key
+*.p12
+*.pfx
+
+# ── deployment & monitoring ─────────────────────────────────────────────────
+.vercel
+.sentryclirc
+
+# ── typescript ──────────────────────────────────────────────────────────────
+*.tsbuildinfo
+next-env.d.ts
