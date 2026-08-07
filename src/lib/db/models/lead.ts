@@ -27,7 +27,8 @@ const leadSchema = new Schema(
     name: { type: String, required: true },
     /* §3.3 form rule 6: "Phone is the primary channel, email secondary. In this
      * market WhatsApp beats email." Hence phone required, email optional. */
-    phone: { type: String, required: true, index: true },
+    // Index declared once, below, via leadSchema.index({ phone: 1 }).
+    phone: { type: String, required: true },
     whatsappOptIn: { type: Boolean, default: true },
     email: { type: String },
 

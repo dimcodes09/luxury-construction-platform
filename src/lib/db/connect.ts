@@ -1,4 +1,26 @@
+import { setServers } from "node:dns";
+
 import mongoose, { type Mongoose } from "mongoose";
+
+/* Optional DNS override, opt-in via DNS_SERVERS.
+ *
+ * Atlas connection strings are `mongodb+srv://`, which requires a DNS SRV
+ * lookup before any socket is opened. Some sandboxes, CI runners and corporate
+ * networks point the system resolver at a stub that refuses external queries —
+ * the failure surfaces as `querySrv ECONNREFUSED`, which reads like a MongoDB
+ * problem but is purely DNS.
+ *
+ * Setting DNS_SERVERS="8.8.8.8,1.1.1.1" points Node's resolver elsewhere. It is
+ * deliberately opt-in and absent from normal runs: silently rewriting DNS for
+ * everyone would be a surprising thing for a data-access module to do, and on
+ * Vercel the platform resolver is the correct one. */
+const dnsServers = process.env.DNS_SERVERS?.split(",")
+  .map((server) => server.trim())
+  .filter(Boolean);
+
+if (dnsServers?.length) {
+  setServers(dnsServers);
+}
 
 /* SRS NFR-PERF-11 / §2.2 stack note — "Mongoose connection MUST be globally
  * cached across lambda invocations (`global._mongoose`) — the standard

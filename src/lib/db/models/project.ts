@@ -84,7 +84,8 @@ const projectSchema = new Schema(
     startDate: { type: Date },
     completionDate: { type: Date, index: true },
 
-    services: [{ type: Types.ObjectId, ref: "Service", index: true }],
+    // Index declared once, below, via projectSchema.index({ services: 1 }).
+    services: [{ type: Types.ObjectId, ref: "Service" }],
     styles: [{ type: String }],
 
     brief: {

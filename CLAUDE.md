@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+Batch verification. Write the full feature, then run lint + tsc +
+build + browser check ONCE at the end. Don't verify after each file.
+Don't re-read files you just wrote.
+
 Authoritative specs live in `docs/`: [design.md](docs/design.md) (experience & visual system), [SRS.md](docs/SRS.md) (functional/non-functional requirements), [implementationplan.md](docs/implementationplan.md) (phasing), [design-process.md](docs/design-process.md) (how to build it — design in the browser, mobile-first, in the specified step order). Read the relevant doc section before implementing anything non-trivial; this file is a summary, not a replacement.
 
 No application code exists yet. This file exists so that when code starts, it starts inside these constraints rather than drifting from them.
@@ -46,7 +50,7 @@ Accepted, deliberate, and listed here so they are not silently rediscovered as b
 
 | Deviation | Spec | Why | Migration path |
 |---|---|---|---|
-| Fonts load via `next/font/google`, not `next/font/local` | design.md §2.2.1 | We don't hold the woff2 subsets yet. `next/font/google` downloads at **build** time and serves from our own origin, so there is no Google Fonts CDN request at runtime, no extra connection on the critical path, and `display: swap` is honoured — the intent of §2.2.1 holds. What it does not yet give us is control over subsetting, which is what the ≤190KB budget depends on. | Drop three woff2 files into `src/styles/fonts/` and swap the three loader calls in [layout.tsx](src/app/layout.tsx). No other file changes. Do this before the Phase 11 performance pass, and re-measure against the ≤190KB font budget at that point. |
+| ~~Fonts load via `next/font/google`~~ — **RESOLVED**, now `next/font/local` per spec | design.md §2.2.1 | `next/font/google` fetches woff2 at compile time via Turbopack's native HTTP stack, which ignores Node's DNS resolver. On any network with a restricted resolver the font module fails to build (`Module not found: @vercel/turbopack-next/internal/font/google/font`) and **every page 500s** — a failure that reads nothing like DNS. Self-hosting removes the build-time network dependency entirely and is what §2.2.1 asked for anyway. | Done. Latin-subset variable cuts live in `src/styles/fonts/`: Fraunces 67.3KB + Inter 48.3KB + JetBrains Mono 40.4KB = **152.3KB / 190KB budget**. Fraunces and Inter are preloaded; mono is not (it carries no above-the-fold text). |
 | `/dev/*` routes are excluded from production | — | The component gallery imports every Radix primitive at once; leaving it in would measure the shared-JS budget against code that never ships. `page.dev.tsx` is only a page extension in development (see [next.config.ts](next.config.ts)). | None needed. Add new dev-only routes as `page.dev.tsx`. |
 
 ## Performance budgets (SRS §8.1) — CI fails the build on breach
@@ -68,6 +72,20 @@ Accepted, deliberate, and listed here so they are not silently rediscovered as b
 `npm run build` runs [scripts/check-bundle-budget.mjs](scripts/check-bundle-budget.mjs) and **exits non-zero** on breach. It measures gzipped JS (the budget is stated gzipped; raw bytes are ~3× and would fail a budget that is actually being met), taking "shared" as the intersection of chunk lists across every route in `app-build-manifest.json`. Run it alone with `npm run check:budget` after a build.
 
 Note: `next build` and `next dev` share `.next/`, so running a build while the dev server is up corrupts it — restart the dev server afterwards.
+
+## Local setup
+
+```
+cp .env.example .env.local     # fill in MONGODB_URI at minimum
+npm run seed                   # reference data: settings, rate card, localities, services, FAQs
+npm run seed:dev               # DEV-ONLY fixture projects (guarded; refuses NODE_ENV=production)
+npm run placeholders           # regenerates public/dev/*.png (gitignored, ~1s)
+npm run dev
+```
+
+`seed:dev` creates six projects with deliberately uneven data so FR-PROJ-01's conditional-section logic is exercised — `/work/wakad-flat-refresh` is the sparse one and must render **no** empty sections. Remove with `npm run seed:dev -- --clean`.
+
+**If DNS is restricted** (sandboxes, some corporate networks): set `DNS_SERVERS=8.8.8.8,1.1.1.1` in `.env.local`. Applied by [scripts/dns-bootstrap.cjs](scripts/dns-bootstrap.cjs) (preloaded before Next starts) and by [connect.ts](src/lib/db/connect.ts) for Mongoose. Absent, nothing is overridden — on Vercel the platform resolver is correct.
 
 ## Banned words (design.md §10.1)
 

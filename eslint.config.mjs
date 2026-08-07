@@ -64,6 +64,9 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      // CommonJS by necessity: loaded via `node --require` before ESM is
+      // available, so require() is the only option open to it.
+      "scripts/**/*.cjs",
     ],
   },
 ];

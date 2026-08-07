@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "node --require ./scripts/dns-bootstrap.cjs ./node_modules/next/dist/bin/next dev --turbopack",
     "build": "next build --turbopack && npm run check:budget",
     "check:budget": "node scripts/check-bundle-budget.mjs",
     "seed": "tsx src/lib/db/seed-cli.ts",
+    "seed:dev": "tsx src/lib/db/seed-cli.ts --dev",
     "placeholders": "node scripts/make-dev-placeholders.mjs",
     "start": "next start",
     "lint": "eslint"

@@ -393,6 +393,25 @@
   transition-duration: var(--dur-base);
 }
 
+/* §4.4 / §4.17 — the project hero is 70svh.
+ * svh not vh: on iOS the collapsing address bar makes vh taller than the
+ * visible viewport, so a 70vh hero is cut off on first paint and then jumps. */
+@utility h-hero-project {
+  height: 70svh;
+}
+
+/* §4.17 — "Carousels use native scroll-snap with 1.15 CARDS VISIBLE — the cut
+ * edge is what tells the user there is more."
+ *
+ * 100 / 1.15 ≈ 87%, so one full card plus a sliver of the next sits inside the
+ * viewport. Named rather than inlined because the ratio is a spec decision, not
+ * a layout tweak, and it appears on the home carousel, related projects and the
+ * behind-the-wall strip. */
+@utility peek-card {
+  flex: 0 0 auto;
+  width: 87%;
+}
+
 /* §3.3 — checkbox, radio, switch and slider thumb carry a 1.5px border.
  * Tailwind's border-width scale is integer-only, so this is a named utility
  * rather than an arbitrary value. */
