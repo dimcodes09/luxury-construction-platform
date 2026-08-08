@@ -17,6 +17,7 @@ export const PRIMARY_NAV: NavItem[] = [
   { label: "Work", href: "/work" },
   { label: "Services", href: "/services" },
   { label: "Process", href: "/process" },
+  { label: "About", href: "/about" },
 ];
 
 export type ServiceGroup = {
@@ -142,6 +143,7 @@ export const FOOTER_COLUMNS = [
   {
     title: "Company",
     links: [
+      { label: "About", href: "/about" },
       { label: "Process", href: "/process" },
       { label: "Careers", href: "/careers" },
       { label: "Reviews", href: "/reviews" },
