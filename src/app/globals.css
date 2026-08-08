@@ -429,6 +429,36 @@
   width: 87%;
 }
 
+/* Tailwind v4 Container utilities */
+@utility max-w-base {
+  max-width: var(--container-base, 85rem);
+}
+@utility max-w-narrow {
+  max-width: var(--container-narrow, 65rem);
+}
+@utility max-w-wide {
+  max-width: var(--container-wide, 100rem);
+}
+@utility max-w-prose {
+  max-width: var(--container-prose, 45rem);
+}
+
+/* §3.5 — the resizable navbar. Past 120px the bar contracts to a floating
+ * pill: width, radius, padding and background all move together on the house
+ * curve. Named so the property list is reviewed once rather than inlined. */
+@utility transition-navbar {
+  transition-property: width, max-width, border-radius, padding, background-color,
+    box-shadow, border-color, height;
+  transition-timing-function: var(--ease-standard);
+  transition-duration: var(--dur-base);
+}
+
+/* The contracted width. 94% leaves an even margin at every viewport while
+ * max-w-base still caps it on large screens. */
+@utility w-navbar-pill {
+  width: 94%;
+}
+
 /* §3.3 — checkbox, radio, switch and slider thumb carry a 1.5px border.
  * Tailwind's border-width scale is integer-only, so this is a named utility
  * rather than an arbitrary value. */

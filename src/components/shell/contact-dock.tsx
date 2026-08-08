@@ -12,7 +12,7 @@ import { Icon } from "@/components/foundation/icon";
  *
  * "Bottom-right, 56px circular, bg #128C7E, WhatsApp glyph. On hover it expands
  * left to a 280px pill showing A REAL TEAM MEMBER'S FACE, FIRST NAME, AND ROLE:
- * 'Priya · Client Relations — usually replies in 20 min.' NAMED HUMANS CONVERT
+ * 'Ghanshyam · Client Relations — usually replies in 20 min.' NAMED HUMANS CONVERT
  * BETTER THAN A GENERIC BUBBLE (R-07, R-01). NEVER AUTO-OPENS. Dismissible;
  * dismissal persists 30 days."
  *
@@ -74,7 +74,7 @@ export function ContactDock({
 
   return (
     // §9.2 — desktop only. Mobile gets the sticky CTA bar instead.
-    <div className="fixed bottom-6 right-6 z-dock hidden items-center lg:flex">
+    <div className="fixed bottom-6 right-6 z-dock flex items-center">
       <div className="group relative flex items-center">
         {/* The expanding pill. Hover/focus only — never on a timer. */}
         <a

@@ -497,7 +497,7 @@ export default function ContactPage() {
               {/* Direct WhatsApp with Team Member */}
               <div className="rounded-md bg-emerald-500/5 border border-emerald-500/20 p-6 flex items-center gap-4">
                 <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-emerald-500">
-                  <Image src="/photos/team-1.jpg" alt="Rahul, Site Engineer" fill className="object-cover" />
+                  <Image src="/photos/team-1.jpg" alt="Ghanshyam, Founder" fill className="object-cover" />
                 </div>
                 <div className="flex-1">
                   <span className="block font-mono text-caption text-emerald-600 dark:text-emerald-400">

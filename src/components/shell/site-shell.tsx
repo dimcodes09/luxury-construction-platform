@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { cn } from "@/lib/utils";
+
 import { FOOTER_COLUMNS } from "@/lib/navigation";
 import { FooterMega } from "@/components/sections/footer-mega";
 import { Button } from "@/components/ui/button";
@@ -22,7 +24,7 @@ import { MotionProvider } from "@/components/motion/motion-provider";
 export function SiteShell({
   children,
   phoneE164,
-  rating,
+
   dockPerson,
   /** FR-GBL-05 — pre-fills WhatsApp with page context, e.g. a project name. */
   whatsappContext,
@@ -30,24 +32,39 @@ export function SiteShell({
 }: {
   children: ReactNode;
   phoneE164: string;
-  rating?: { value: number; count: number };
   dockPerson: React.ComponentProps<typeof ContactDock>["person"];
   whatsappContext?: string;
   featuredProject?: React.ComponentProps<typeof Header>["featuredProject"];
 }) {
   return (
     <>
-      {/* §9.4 skip link — first in the DOM, invisible until focused. */}
+      {/* §9.4 skip link — first in the DOM, and REQUIRED: it is how a keyboard
+       * user gets past the nav without tabbing through every item.
+       *
+       * `focus-visible`, not `focus`. With plain `focus:` it appeared whenever
+       * the browser restored focus to it — including on a normal page load —
+       * so it sat over the header looking like a bug. focus-visible fires only
+       * for keyboard interaction, which is the only case it exists for.
+       *
+       * Styled to the system rather than left as a raw black box: brass border,
+       * canvas surface, and positioned clear of the wordmark. */}
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-devtools focus:rounded-sm focus:bg-ink-900 focus:px-4 focus:py-3 focus:font-sans focus:text-body-sm focus:text-basalt-050"
+        className={cn(
+          "sr-only",
+          "focus-visible:not-sr-only focus-visible:fixed focus-visible:left-1/2",
+          "focus-visible:top-4 focus-visible:z-devtools focus-visible:-translate-x-1/2",
+          "focus-visible:rounded-full focus-visible:border focus-visible:border-brass-500",
+          "focus-visible:bg-ink-900 focus-visible:px-6 focus-visible:py-3",
+          "focus-visible:font-sans focus-visible:text-body-sm focus-visible:text-basalt-050",
+          "focus-visible:shadow-modal",
+        )}
       >
         Skip to content
       </a>
 
       <Header
         phoneE164={phoneE164}
-        rating={rating}
         featuredProject={featuredProject}
       />
 

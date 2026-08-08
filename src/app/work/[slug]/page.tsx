@@ -87,11 +87,10 @@ export default async function ProjectPage({
   return (
     <SiteShell
       phoneE164={phoneE164}
-      rating={{ value: 4.9, count: 61 }}
       whatsappContext={`${project.title} project`}
       dockPerson={{
-        firstName: "Priya",
-        role: "Client Relations",
+        firstName: "Ghanshyam",
+        role: "Founder",
         responseNote: "usually replies in 20 minutes",
       }}
     >

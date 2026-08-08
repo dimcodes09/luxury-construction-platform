@@ -66,12 +66,34 @@ function gzippedSize(file) {
 
 const isJs = (file) => file.endsWith(".js");
 
-// Shared = present in EVERY route's chunk list.
-const [, firstChunks] = routes[0];
-let shared = new Set(firstChunks.filter(isJs));
-for (const [, chunks] of routes.slice(1)) {
-  const chunkSet = new Set(chunks);
-  shared = new Set([...shared].filter((file) => chunkSet.has(file)));
+/* SHARED = the framework baseline every route loads, which Next tracks as
+ * `rootMainFiles` in build-manifest.json.
+ *
+ * An earlier version derived this as the INTERSECTION of every route in
+ * app-build-manifest. That silently broke once most pages became fully static:
+ * only routes carrying a client component appear in that manifest, so with two
+ * entries the intersection collapsed to almost nothing and the remainder was
+ * misattributed to the route — reporting /estimate at 126KB against a 90KB
+ * budget when its real additional cost was a fraction of that. */
+const buildManifestPath = join(NEXT_DIR, "build-manifest.json");
+if (!existsSync(buildManifestPath)) {
+  fail(`${buildManifestPath} not found. Run \`next build\` before the check.`);
+}
+
+const buildManifest = JSON.parse(readFileSync(buildManifestPath, "utf8"));
+const shared = new Set((buildManifest.rootMainFiles ?? []).filter(isJs));
+
+if (shared.size === 0) {
+  fail("no rootMainFiles in build-manifest.json — is this a production build?");
+}
+
+/* A dev server writing to the same .next would leave HMR chunks here, which are
+ * not shipped and would inflate the number. Catch it rather than report a
+ * figure that means nothing. */
+if ([...shared].some((file) => file.includes("hmr-client"))) {
+  fail(
+    "build-manifest.json contains dev HMR chunks. Stop `next dev`, delete .next, and rebuild.",
+  );
 }
 
 const sharedBytes = [...shared].reduce(

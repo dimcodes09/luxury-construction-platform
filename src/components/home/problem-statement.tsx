@@ -15,7 +15,7 @@ import { Display, Body, Heading } from "@/components/foundation/typography";
 
 export function ProblemStatement() {
   return (
-    <Section rhythm="feature" container="narrow" className="bg-basalt-050 dark:bg-basalt-950">
+    <Section rhythm="standard" container="narrow" className="bg-basalt-050 dark:bg-basalt-950">
       {/* §7.7 S02: M1, SINGLE BLOCK, NO STAGGER, top 80%. Staggering here
         * would serialise a paragraph that has to land as one thought. */}
       <div
@@ -27,16 +27,16 @@ export function ProblemStatement() {
           Most people building a home are quietly terrified.
         </Display>
 
-        <Body size="lg" className="mx-auto mt-8 text-balance">
+        <Body size="lg" className="mx-auto mt-6 text-balance">
           Not of the cost. Of not knowing. Of a number that moves. Of work sealed
           behind plaster before anyone checked it. Of a builder who stops
           answering.
         </Body>
 
         {/* The turn. §4.1 requires the resolution to sit in the same viewport. */}
-        <div className="datum-rule mx-auto mt-12 max-w-24" />
+        <div className="datum-rule mx-auto mt-10 max-w-24" />
 
-        <Heading as="p" size="md" className="mt-12 text-balance">
+        <Heading as="p" size="md" className="mt-10 text-balance">
           So we built the company around removing the not-knowing.
         </Heading>
       </div>

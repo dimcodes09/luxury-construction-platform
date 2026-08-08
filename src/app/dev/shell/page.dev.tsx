@@ -34,11 +34,10 @@ export default function ShellHarnessPage() {
   return (
     <SiteShell
       phoneE164="+919399817681"
-      rating={{ value: 4.9, count: 61 }}
       whatsappContext="Ridgeline House project"
       dockPerson={{
-        firstName: "Priya",
-        role: "Client Relations",
+        firstName: "Ghanshyam",
+        role: "Founder",
         responseNote: "usually replies in 20 minutes",
         photo: { src: "/photos/team-1.jpg", alt: "" },
       }}

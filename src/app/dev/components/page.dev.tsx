@@ -329,7 +329,7 @@ export default function ComponentGalleryPage() {
         <Bench id="misc-primitives" section="§3.0" title="Avatar, Spinner, Divider">
           <div className="flex flex-wrap items-center gap-8">
             <div className="flex items-center gap-3">
-              <Avatar name="Priya Kulkarni" size="sm" />
+              <Avatar name="Ghanshyam Kulkarni" size="sm" />
               <Avatar name="Anjali Deshpande" size="md" />
               <Avatar name="Rohit Deshpande" size="lg" />
             </div>
@@ -792,8 +792,8 @@ export default function ComponentGalleryPage() {
           <div className="grid gap-8 lg:grid-cols-3">
             <TeamCard
               member={{
-                name: "Priya Kulkarni",
-                role: "Client Relations",
+                name: "Ghanshyam Kulkarni",
+                role: "Founder",
                 photo: { src: "/photos/team-1.jpg", alt: "" },
                 tenureFrom: 2019,
                 bio: "Answers the WhatsApp dock, usually within 20 minutes.",

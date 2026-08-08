@@ -12,7 +12,8 @@
     "start": "next start",
     "lint": "eslint",
     "photos": "node scripts/fetch-photos.mjs",
-    "audit:colors": "node scripts/audit-colors.mjs"
+    "audit:colors": "node scripts/audit-colors.mjs",
+    "admin:create": "tsx src/lib/auth/create-admin.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
