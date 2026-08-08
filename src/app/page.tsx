@@ -18,6 +18,7 @@ import { ServicesAsIntents } from "@/components/home/services-intents";
 import { MiniEstimator } from "@/components/home/mini-estimator";
 import { ProcessStrip } from "@/components/home/process-strip";
 import { ShowcaseFrame } from "@/components/home/showcase-frame";
+import { TestimonialsDragBackground } from "@/components/sections/testimonials-drag-background";
 import {
   getFeaturedProjects,
   getFeaturedTestimonials,
@@ -176,49 +177,8 @@ export default async function HomePage() {
       {/* ── S08 · Process, compressed ────────────────────────────────── */}
       <ProcessStrip />
 
-      {/* ── S09 · Testimonials ───────────────────────────────────────────
-       * §4.1 pairs these with a live Google rating block (FR-HOME-06), which
-       * needs the Places API — not wired yet, so the section renders the
-       * testimonials alone rather than a broken or faked rating. INT-06 is
-       * explicit that a failure here shows last-known values and NEVER an
-       * error; showing nothing is the honest interim. */}
-      {testimonials.length > 0 ? (
-        <Section rhythm="standard">
-          <SectionHeader
-            index="07"
-            label="What clients say"
-            title="Specific praise, or none at all."
-          />
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
-            {testimonials.map((testimonial) => (
-              <TestimonialCard
-                key={testimonial.clientName}
-                testimonial={{
-                  quote: testimonial.quote,
-                  clientName: testimonial.clientName,
-                  projectLabel: [testimonial.projectTitle, testimonial.locality]
-                    .filter(Boolean)
-                    .join(", "),
-                  projectHref: testimonial.projectHref,
-                  date: new Date(testimonial.date).toLocaleDateString("en-IN", {
-                    month: "short",
-                    year: "numeric",
-                  }),
-                  // Ratings are 1–5 in the schema; narrow for the card's union.
-                  rating: Math.min(5, Math.max(1, testimonial.rating)) as
-                    | 1
-                    | 2
-                    | 3
-                    | 4
-                    | 5,
-                  verified: testimonial.verified,
-                  sourceUrl: testimonial.sourceUrl,
-                }}
-              />
-            ))}
-          </div>
-        </Section>
-      ) : null}
+      {/* ── S09 · Testimonials (Aceternity UI Drag Background) ───────── */}
+      <TestimonialsDragBackground />
 
       {/* ── S10 · Closing CTA band ───────────────────────────────────────
        * §4.1: "Why 'Tell us about your site' and not 'Contact us': it names an
