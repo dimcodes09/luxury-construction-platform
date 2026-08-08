@@ -18,7 +18,6 @@ export const PRIMARY_NAV: NavItem[] = [
   { label: "Services", href: "/services" },
   { label: "Process", href: "/process" },
   { label: "About", href: "/about" },
-  { label: "Journal", href: "/journal" },
 ];
 
 export type ServiceGroup = {
@@ -155,8 +154,6 @@ export const FOOTER_COLUMNS = [
   {
     title: "Resources",
     links: [
-      { label: "The Zyvora Journal", href: "/journal" },
-      { label: "Cost guides", href: "/journal/category/cost-guides" },
       { label: "FAQ", href: "/faq" },
       { label: "Materials", href: "/materials" },
       { label: "Downloads", href: "/downloads" },
